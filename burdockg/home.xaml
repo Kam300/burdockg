@@ -3,83 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:burdockg"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:burdockg" xmlns:sys="http://schemas.microsoft.com/winfx/2009/xaml"
         mc:Ignorable="d"
-        Title="Лопушок" Height="400" Width="700"
+                Title="Лопушок" Height="400" Width="700"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/images/logo.ico">
-    <Window.Resources>
-        <!-- Стиль для ComboBox -->
-        <Style TargetType="ComboBox">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ComboBox">
-                        <Grid>
-                            <!-- Основной Border с закругленными углами -->
-                            <Border x:Name="MainBorder"
-                                    CornerRadius="10"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}" />
-                            <!-- ContentPresenter для отображения выбранного элемента -->
-                            <ContentPresenter x:Name="ContentSite"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Left"
-                                              Margin="5,0,0,0"
-                                              Content="{TemplateBinding SelectionBoxItem}"
-                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" />
-                            <!-- Кнопка для открытия выпадающего списка -->
-                            <ToggleButton x:Name="ToggleButton"
-                                          Grid.Column="1"
-                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                          Style="{StaticResource ComboBoxToggleButtonStyle}" />
-                            <!-- Выпадающий список -->
-                            <Popup x:Name="Popup"
-                                   Placement="Bottom"
-                                   IsOpen="{TemplateBinding IsDropDownOpen}"
-                                   AllowsTransparency="True"
-                                   Focusable="False"
-                                   PopupAnimation="Slide">
-                                <Border x:Name="DropDownBorder"
-                                        CornerRadius="10"
-                                        Background="White"
-                                        BorderBrush="Gray"
-                                        BorderThickness="1">
-                                    <ScrollViewer Margin="4">
-                                        <ItemsPresenter />
-                                    </ScrollViewer>
-                                </Border>
-                            </Popup>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
-        <!-- Стиль для ToggleButton внутри ComboBox -->
-        <Style x:Key="ComboBoxToggleButtonStyle" TargetType="ToggleButton">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Border Background="Transparent">
-                            <Path x:Name="Arrow"
-                                  Fill="Black"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  Data="M 0 0 L 4 4 L 8 0 Z"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Arrow" Property="Fill" Value="Red"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -110,6 +40,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
@@ -118,13 +49,145 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"/>
-
-                <ComboBox Width="150" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+                <ComboBox Grid.Row="1">
+                    <ComboBox.Resources>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ComboBox">
+                                        <Grid>
+                                            <Border x:Name="Border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                <Grid>
+                                                    <ToggleButton x:Name="ToggleButton" Grid.Column="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButtonStyle}"/>
+                                                    <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3,3,23,3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                                    <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,3,23,3" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                                                    <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+                                                        <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                                            <Border x:Name="DropDownBorder" CornerRadius="10" Background="{StaticResource ComboBoxPopupBackground}" BorderBrush="{StaticResource ComboBoxPopupBorderBrush}" BorderThickness="1"/>
+                                                            <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                                                <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                                            </ScrollViewer>
+                                                        </Grid>
+                                                    </Popup>
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ComboBox.Resources>
                     <sys:String>Tom</sys:String>
                     <sys:String>Bob</sys:String>
                     <sys:String>Sam</sys:String>
                     <sys:String>Alice</sys:String>
                 </ComboBox>
+
+               
+            </Grid>
+        </StackPanel>
+        
+        
+        
+        
+
+        <Button Content="Назад"
+                Height="40"
+                Background="#00FF7F"
+                Foreground="Black"
+                Margin="0,0,0,15" FontFamily="Gabriola" FontSize="24" 
+                Grid.Column="1" Grid.ColumnSpan="1"  Grid.Row="5" Click="back_Click" BorderThickness="0,0,0,0">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+        <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center"  Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1"/>
+        <TextBox Height="35" 
+                         Width="170"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="3" Grid.RowSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"/>
+                <TextBox Height="35" 
+                         Width="200"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBlock Text="Имя" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"/>
+
+                <TextBox Height="35" 
+                         Width="200"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="1"
+                         Grid.Column="1">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBlock Text="Отчество" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2"/>
+                <TextBox Height="35" 
+                         Width="200"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="1"
+                         Grid.Column="2">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBlock Text="Роль" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1"/>
+
+                <TextBox Height="35" 
+                         Width="200"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="3"
+                         Grid.Column="1">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
             </Grid>
         </StackPanel>
     </Grid>
