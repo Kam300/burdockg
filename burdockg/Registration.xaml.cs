@@ -22,15 +22,49 @@ namespace burdockg
         public Registration()
         {
             InitializeComponent();
+            
+            // Initialize the role combobox
+            roleComboBox.Items.Add("Администратор");
+            roleComboBox.Items.Add("Менеджер");
+            roleComboBox.Items.Add("Клиент");
+            roleComboBox.SelectedIndex = 2; // Default to Client
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
             Authorization taskWindow = new Authorization();
-
             taskWindow.Show();
             this.Hide();
+        }
 
+        private void Continue_Click(object sender, RoutedEventArgs e)
+        {
+            // Here you would add registration validation logic
+            
+            // Check if passwords match
+            if (passwordBox.Password != confirmPasswordBox.Password)
+            {
+                MessageBox.Show("Пароли не совпадают!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
+            // Check if all fields are filled
+            if (string.IsNullOrWhiteSpace(lastNameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(firstNameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(loginTextBox.Text) ||
+                string.IsNullOrWhiteSpace(passwordBox.Password) ||
+                roleComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Пожалуйста, заполните все обязательные поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
+            // Registration successful, navigate to home
+            MessageBox.Show("Регистрация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            
+            home homeWindow = new home();
+            homeWindow.Show();
+            this.Hide();
         }
     }
 }

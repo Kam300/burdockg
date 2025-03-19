@@ -31,17 +31,13 @@
         <StackPanel Grid.Column="2" 
                     Margin="0,40,20,20">
 
-           
-
             <TextBlock Text="Логин" FontFamily="Gabriola" LineHeight="6" FontSize="16"/>
-            <TextBox Height="35" 
+            <TextBox x:Name="loginTextBox" 
+                     Height="35" 
                      Background="#E0FFFF"
                      Margin="0,-5,0,15"
                      FontSize="16"
-                      VerticalContentAlignment="Center"
-
-                     
-                     >
+                     VerticalContentAlignment="Center">
                 <TextBox.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -50,10 +46,11 @@
             </TextBox>
 
             <TextBlock Text="Пароль" FontFamily="Gabriola" FontSize="16"/>
-            <PasswordBox Height="35"
+            <PasswordBox x:Name="passwordBox"
+                        Height="35"
                         Background="#E0FFFF" 
                         Margin="0,-5,0,25"
-                          FontSize="16">
+                        FontSize="16">
                 <PasswordBox.Template>
                     <ControlTemplate TargetType="{x:Type PasswordBox}">
                         <Border Background="{TemplateBinding Background}"
@@ -72,7 +69,11 @@
                     Height="40"
                     Background="#00FF7F"
                     Foreground="Black" 
-                    Margin="0,0,0,15" FontFamily="Gabriola" FontSize="24" BorderThickness="0,0,0,0">
+                    Margin="0,0,0,15" 
+                    FontFamily="Gabriola" 
+                    FontSize="24" 
+                    BorderThickness="0,0,0,0"
+                    Click="LoginButton_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="20"/>
@@ -81,10 +82,13 @@
             </Button>
 
             <Button Content="Регистрация"
-                       HorizontalAlignment="Center"
+                    HorizontalAlignment="Center"
                     Background="Transparent"
-                       Foreground="Black" FontFamily="Gabriola"
-                        FontSize="16" Click="RegistrationClick" BorderThickness="0,0,0,0" />
+                    Foreground="Black" 
+                    FontFamily="Gabriola"
+                    FontSize="16" 
+                    Click="RegistrationClick" 
+                    BorderThickness="0,0,0,0" />
         </StackPanel>
     </Grid>
 </Window>

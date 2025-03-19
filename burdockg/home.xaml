@@ -5,190 +5,242 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:burdockg" xmlns:sys="http://schemas.microsoft.com/winfx/2009/xaml"
         mc:Ignorable="d"
-                Title="Лопушок" Height="400" Width="700"
+        Title="Лопушок" Height="700" Width="950"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/images/logo.ico">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Image Source="images/logo.png" 
-               Width="70" 
-               Height="70" 
-               Margin="0,0,20,0"
-               VerticalAlignment="Center"
-               Grid.Column="0" Grid.Row="0" />
-
-        <StackPanel Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"/>
-                <ComboBox Grid.Row="1">
-                    <ComboBox.Resources>
-                        <Style TargetType="ComboBox">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ComboBox">
-                                        <Grid>
-                                            <Border x:Name="Border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                                                <Grid>
-                                                    <ToggleButton x:Name="ToggleButton" Grid.Column="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButtonStyle}"/>
-                                                    <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3,3,23,3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                                    <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,3,23,3" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                                                    <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
-                                                        <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                                            <Border x:Name="DropDownBorder" CornerRadius="10" Background="{StaticResource ComboBoxPopupBackground}" BorderBrush="{StaticResource ComboBoxPopupBorderBrush}" BorderThickness="1"/>
-                                                            <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
-                                                                <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
-                                                            </ScrollViewer>
-                                                        </Grid>
-                                                    </Popup>
-                                                </Grid>
-                                            </Border>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ComboBox.Resources>
-                    <sys:String>Tom</sys:String>
-                    <sys:String>Bob</sys:String>
-                    <sys:String>Sam</sys:String>
-                    <sys:String>Alice</sys:String>
-                </ComboBox>
-
-               
-            </Grid>
+        <!-- Header with Logo and Title -->
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="20,10,0,0" HorizontalAlignment="Left">
+            <Image Source="images/logo.png" Width="60" Height="60"/>
+            <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" HorizontalAlignment="Center" Margin="0,5,0,0"/>
         </StackPanel>
-        
-        
-        
-        
 
-        <Button Content="Назад"
-                Height="40"
-                Background="#00FF7F"
-                Foreground="Black"
-                Margin="0,0,0,15" FontFamily="Gabriola" FontSize="24" 
-                Grid.Column="1" Grid.ColumnSpan="1"  Grid.Row="5" Click="back_Click" BorderThickness="0,0,0,0">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        
-        <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center"  Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1"/>
-        <TextBox Height="35" 
-                         Width="170"
-                         Background="#E0FFFF"
-                         Margin="0,-5,0,15"
-                         FontSize="16"
-                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4">
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <StackPanel Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="3" Grid.RowSpan="2">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+        <!-- Search, Sort and Filter Panel -->
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
 
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"/>
-                <TextBox Height="35" 
-                         Width="200"
-                         Background="#E0FFFF"
-                         Margin="0,-5,0,15"
-                         FontSize="16"
-                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1">
-                    <TextBox.Resources>
+            <Border Grid.Column="0" CornerRadius="5" BorderThickness="1" BorderBrush="Gray">
+                <TextBox Text="Поле для поиска" Padding="10,0,0,0" VerticalContentAlignment="Center" BorderThickness="0" Background="Transparent"/>
+            </Border>
+
+            <Border Grid.Column="1" CornerRadius="5" BorderThickness="1" BorderBrush="Gray" Margin="10,0,0,0">
+                <Grid>
+                    <TextBlock Text="Сортировка" Padding="10,0,0,0" VerticalAlignment="Center"/>
+                    <ComboBox BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" Width="30" Margin="0,0,5,0">
+                        <ComboBoxItem Content="▼"/>
+                    </ComboBox>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" CornerRadius="5" BorderThickness="1" BorderBrush="Gray" Margin="10,0,0,0">
+                <Grid>
+                    <TextBlock Text="Фильтрация" Padding="10,0,0,0" VerticalAlignment="Center"/>
+                    <ComboBox BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" Width="30" Margin="0,0,5,0">
+                        <ComboBoxItem Content="▼"/>
+                    </ComboBox>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Product List -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="20,10,20,10">
+            <StackPanel>
+                <!-- Product Item Template (repeated for each product) -->
+                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
+                    <Grid Height="120">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Product Image -->
+                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
+                            <Image Source="/images/image.png" Stretch="Uniform"/>
+                        </Border>
+
+                        <!-- Product Details -->
+                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Тип продукта | " Foreground="#FF9900"/>
+                                <TextBlock Text="Наименование продукта" Foreground="#0066CC"/>
+                            </StackPanel>
+                            <TextBlock Text="Артикул" Margin="0,5,0,5"/>
+                            <TextBlock>
+                                <Run Text="Материалы: " />
+                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC"/>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <!-- Price and Actions -->
+                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
+                            <TextBlock Text="Стоимость" HorizontalAlignment="Right" FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
+                                </Button>
+                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Repeat product items (3 more times for example) -->
+                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
+                    <Grid Height="120">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
+                            <Image Source="/images/image.png" Stretch="Uniform"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Тип продукта | " Foreground="#FF9900"/>
+                                <TextBlock Text="Наименование продукта" Foreground="#0066CC"/>
+                            </StackPanel>
+                            <TextBlock Text="Артикул" Margin="0,5,0,5"/>
+                            <TextBlock>
+                                <Run Text="Материалы: " />
+                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC"/>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <!-- Price and Actions -->
+                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
+                            <TextBlock Text="Стоимость" HorizontalAlignment="Right" FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0" Click="EditButton_Click">
+                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
+                                </Button>
+                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0" Click="DeleteButton_Click">
+                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
+                    <Grid Height="120">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
+                            <Image Source="/images/image.png" Stretch="Uniform"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Тип продукта | " Foreground="#FF9900"/>
+                                <TextBlock Text="Наименование продукта" Foreground="#0066CC"/>
+                            </StackPanel>
+                            <TextBlock Text="Артикул" Margin="0,5,0,5"/>
+                            <TextBlock>
+                                <Run Text="Материалы: " />
+                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC"/>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
+                            <TextBlock Text="Стоимость" HorizontalAlignment="Right" FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
+                                </Button>
+                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
+                    <Grid Height="120">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
+                            <Image Source="/images/image.png" Stretch="Uniform"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Тип продукта | " Foreground="#FF9900"/>
+                                <TextBlock Text="Наименование продукта" Foreground="#0066CC"/>
+                            </StackPanel>
+                            <TextBlock Text="Артикул" Margin="0,5,0,5"/>
+                            <TextBlock>
+                                <Run Text="Материалы: " />
+                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC"/>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
+                            <TextBlock Text="Стоимость" HorizontalAlignment="Right" FontWeight="Bold"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
+                                </Button>
+                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0">
+                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer with Navigation and Add Button -->
+        <Grid Grid.Row="3" Margin="20,0,20,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Content="Назад" Width="80" Height="35" Background="#00FF7F" BorderThickness="0" Click="BackButton_Click">
+                    <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
-                    </TextBox.Resources>
-                </TextBox>
-                <TextBlock Text="Имя" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"/>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
 
-                <TextBox Height="35" 
-                         Width="200"
-                         Background="#E0FFFF"
-                         Margin="0,-5,0,15"
-                         FontSize="16"
-                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="1"
-                         Grid.Column="1">
-                    <TextBox.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-                <TextBlock Text="Отчество" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2"/>
-                <TextBox Height="35" 
-                         Width="200"
-                         Background="#E0FFFF"
-                         Margin="0,-5,0,15"
-                         FontSize="16"
-                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="1"
-                         Grid.Column="2">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-                <TextBlock Text="Роль" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1"/>
+            <Button HorizontalAlignment="Center" Width="50" Height="50" Background="#00FF7F" BorderThickness="0" Content="+" FontSize="24" FontWeight="Bold" Click="AddButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
 
-                <TextBox Height="35" 
-                         Width="200"
-                         Background="#E0FFFF"
-                         Margin="0,-5,0,15"
-                         FontSize="16"
-                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="3"
-                         Grid.Column="1">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-            </Grid>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="&lt;1 2 3 4&gt;" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

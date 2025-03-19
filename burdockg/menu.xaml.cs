@@ -1,27 +1,63 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace burdockg
 {
-    /// <summary>
-    /// Логика взаимодействия для menu.xaml
-    /// </summary>
     public partial class menu : Window
     {
         public menu()
         {
             InitializeComponent();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate back to Authorization
+            Authorization authWindow = new Authorization();
+            authWindow.Show();
+            this.Hide();
+        }
+
+        private void ProductInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to home window (product information)
+            home homeWindow = new home();
+            homeWindow.Show();
+            this.Hide();
+        }
+
+        // Add other button click handlers as needed
+        private void ProductionButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to production window
+            MessageBox.Show("Переход к окну производства", "Навигация", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void WarehouseButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to warehouse window
+            MessageBox.Show("Переход к окну склада", "Навигация", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void EmployeesButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to employees window
+            MessageBox.Show("Переход к окну сотрудников", "Навигация", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void AgentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to agents window
+            MessageBox.Show("Переход к окну агентов", "Навигация", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void ProfileImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Navigate to profile window
+            profile profileWindow = new profile();
+            profileWindow.Show();
+            this.Hide();
         }
     }
 }

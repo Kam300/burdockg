@@ -22,6 +22,25 @@ namespace burdockg
         public profile()
         {
             InitializeComponent();
+            LoadProfileData();
+        }
+
+        private void LoadProfileData()
+        {
+            // Here you would load the user's profile data
+            // For now, we'll just set some sample data
+            lastNameTextBox.Text = "Иванов";
+            firstNameTextBox.Text = "Иван";
+            middleNameTextBox.Text = "Иванович";
+            roleTextBox.Text = "Администратор";
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate back to menu
+            menu menuWindow = new menu();
+            menuWindow.Show();
+            this.Hide();
         }
     }
 }

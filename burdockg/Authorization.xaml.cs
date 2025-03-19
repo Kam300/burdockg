@@ -28,11 +28,18 @@ namespace burdockg
         {
             Registration taskWindow = new Registration();
             
-
             taskWindow.Show();
             this.Hide();
+        }
 
-
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Here you would add authentication logic
+            // For now, we'll just navigate to the menu window
+            
+            menu menuWindow = new menu();
+            menuWindow.Show();
+            this.Hide();
         }
     }
 }

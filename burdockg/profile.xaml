@@ -42,7 +42,8 @@
                 Background="#00FF7F"
                 Foreground="Black"
                 Margin="0,0,0,15" FontFamily="Gabriola" FontSize="24" 
-                Grid.Column="1" Grid.ColumnSpan="1"  Grid.Row="5" Click="back_Click" BorderThickness="0,0,0,0">
+                Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="5" BorderThickness="0,0,0,0"
+                Click="BackButton_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"/>
@@ -81,7 +82,8 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"/>
-                <TextBox Height="35" 
+                <TextBox x:Name="lastNameTextBox" 
+                         Height="35" 
                          Width="200"
                          Background="#E0FFFF"
                          Margin="0,-5,0,15"
@@ -89,6 +91,48 @@
                          VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1">
                     <TextBox.Resources>
                         <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox x:Name="firstNameTextBox" 
+                         Height="35" 
+                         Width="200"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1"
+                         Grid.Column="1">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox x:Name="middleNameTextBox" 
+                         Height="35" 
+                         Width="200"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1"
+                         Grid.Column="2">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox x:Name="roleTextBox" 
+                         Height="35" 
+                         Width="200"
+                         Background="#E0FFFF"
+                         Margin="0,-5,0,15"
+                         FontSize="16"
+                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="3"
+                         Grid.Column="1">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </TextBox.Resources>

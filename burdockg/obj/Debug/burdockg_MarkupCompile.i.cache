@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\student\Desktop\burdockg\burdockg\obj\Debug\
+C:\burdockg\burdockg\obj\Debug\
 burdockg
 none
 false
 DEBUG;TRACE
-C:\Users\student\Desktop\burdockg\burdockg\App.xaml
-6-1620659988
+C:\burdockg\burdockg\App.xaml
+8586888805
 
-11-1342565648
-13-946294123
-Authorization.xaml;home.xaml;MainWindow.xaml;menu.xaml;profile.xaml;Registration.xaml;
+13-1943726362
+13-38814620
+AddProduct.xaml;Authorization.xaml;EditProduct.xaml;home.xaml;MainWindow.xaml;menu.xaml;profile.xaml;Registration.xaml;
 
 True
 
