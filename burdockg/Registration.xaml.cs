@@ -39,32 +39,34 @@ namespace burdockg
 
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
-            // Here you would add registration validation logic
-            
-            // Check if passwords match
+            var dbHelper = new DatabaseHelper();
+
+            // Проверка совпадения паролей
             if (passwordBox.Password != confirmPasswordBox.Password)
             {
-                MessageBox.Show("Пароли не совпадают!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пароли не совпадают!");
                 return;
             }
-            
-            // Check if all fields are filled
-            if (string.IsNullOrWhiteSpace(lastNameTextBox.Text) ||
-                string.IsNullOrWhiteSpace(firstNameTextBox.Text) ||
-                string.IsNullOrWhiteSpace(loginTextBox.Text) ||
-                string.IsNullOrWhiteSpace(passwordBox.Password) ||
-                roleComboBox.SelectedItem == null)
+
+            // Регистрация через хранимую процедуру
+            bool success = dbHelper.RegisterUser(
+                lastNameTextBox.Text,
+                firstNameTextBox.Text,
+                middleNameTextBox.Text,
+                loginTextBox.Text,
+                passwordBox.Password,
+                roleComboBox.SelectedItem.ToString()
+            );
+
+            if (success)
             {
-                MessageBox.Show("Пожалуйста, заполните все обязательные поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                MessageBox.Show("Регистрация успешна!");
+                // Переход на главный экран
             }
-            
-            // Registration successful, navigate to home
-            MessageBox.Show("Регистрация успешна!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            
-            home homeWindow = new home();
-            homeWindow.Show();
-            this.Hide();
+            else
+            {
+                MessageBox.Show("Ошибка регистрации. Возможно, логин занят.");
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:burdockg"
         mc:Ignorable="d"
-                Title="Лопушок" Height="600" Width="950"
+        Title="Лопушок" Height="600" Width="950"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/images/logo.ico">
@@ -47,13 +47,13 @@
             <!-- Right Column - Form Fields -->
             <StackPanel Grid.Column="1">
                 <!-- Product Name -->
-                <TextBlock Text="Наименование продукта" FontSize="14" Margin="0,0,0,5"/>
+                <TextBlock Text="Наименование продукта" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
                 <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
                     <TextBox x:Name="productNameTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
                 </Border>
 
                 <!-- Product Type -->
-                <TextBlock Text="Тип продукта" FontSize="14" Margin="0,0,0,5"/>
+                <TextBlock Text="Тип продукта" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
                 <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
                     <Grid>
                         <ComboBox x:Name="productTypeComboBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center">
@@ -66,7 +66,7 @@
                 </Border>
 
                 <!-- Materials -->
-                <TextBlock Text="Материалы: Материал1,Материал2...МатериалN" FontSize="14" Margin="0,0,0,5"/>
+                <TextBlock Text="Материалы: Материал1,Материал2...МатериалN" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
                 <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
                     <Grid>
                         <ComboBox x:Name="materialsComboBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center">
@@ -79,7 +79,7 @@
                 </Border>
 
                 <!-- Cost -->
-                <TextBlock Text="Стоимость" FontSize="14" Margin="0,0,0,5"/>
+                <TextBlock Text="Стоимость" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
                 <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
                     <TextBox x:Name="costTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
                 </Border>
@@ -88,7 +88,7 @@
 
         <!-- Footer with Buttons -->
         <Grid Grid.Row="2" Margin="40,0,40,20">
-            <Button Content="Назад" Width="100" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Left" Click="BackButton_Click">
+            <Button Content="Назад" Width="100" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Left" Click="BackButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -96,7 +96,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Сохранить изменения" Width="200" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Right" Click="SaveButton_Click">
+            <Button Content="Сохранить изменения" Width="200" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Right" Click="SaveButton_Click" FontSize="16"  FontFamily="Gabriola">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>

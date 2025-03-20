@@ -34,12 +34,28 @@ namespace burdockg
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            // Here you would add authentication logic
-            // For now, we'll just navigate to the menu window
-            
-            menu menuWindow = new menu();
-            menuWindow.Show();
-            this.Hide();
+            var dbHelper = new DatabaseHelper();
+
+            // Авторизация через хранимую процедуру
+            var (userId, role) = dbHelper.AuthenticateUser(
+                loginTextBox.Text,
+                passwordBox.Password
+            );
+
+            if (userId != -1)
+            {
+
+                MessageBox.Show($"Добро пожаловать! Ваша роль: {role}");
+                // Открытие главного окна в зависимости от роли
+                menu taskWindow = new menu();
+
+                taskWindow.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль!");
+            }
         }
     }
 }
