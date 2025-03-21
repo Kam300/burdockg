@@ -1,0 +1,546 @@
+-- Отключаем проверку внешних ключей
+SET session_replication_role = 'replica';
+
+-- ----------------------------------------------------------------------------
+-- Table public.AgentType
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "AgentType" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(50) NOT NULL,
+  "Image" VARCHAR(100)
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.Supplier
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "Supplier" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(150) NOT NULL,
+  "INN" VARCHAR(12) NOT NULL,
+  "StartDate" DATE NOT NULL,
+  "QualityRating" INT,
+  "SupplierType" VARCHAR(20)
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.ProductType
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "ProductType" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(50) NOT NULL,
+  "DefectedPercent" DOUBLE PRECISION NOT NULL
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.Product
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "Product" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(100) NOT NULL,
+  "ProductTypeID" INT,
+  "ArticleNumber" VARCHAR(10) NOT NULL,
+  "Description" TEXT,
+  "Image" VARCHAR(100),
+  "ProductionPersonCount" INT,
+  "ProductionWorkshopNumber" INT,
+  "MinCostForAgent" DECIMAL(10,2) NOT NULL,
+  CONSTRAINT "FK_Product_ProductType"
+    FOREIGN KEY ("ProductTypeID")
+    REFERENCES "ProductType" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.MaterialType
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "MaterialType" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(50) NOT NULL,
+  "DefectedPercent" DOUBLE PRECISION NOT NULL
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.Material
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "Material" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(100) NOT NULL,
+  "CountInPack" INT NOT NULL,
+  "Unit" VARCHAR(10) NOT NULL,
+  "CountInStock" DOUBLE PRECISION,
+  "MinCount" DOUBLE PRECISION NOT NULL,
+  "Description" TEXT,
+  "Cost" DECIMAL(10,2) NOT NULL,
+  "Image" VARCHAR(100),
+  "MaterialTypeID" INT NOT NULL,
+  CONSTRAINT "FK_Material_MaterialType"
+    FOREIGN KEY ("MaterialTypeID")
+    REFERENCES "MaterialType" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.MaterialSupplier
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "MaterialSupplier" (
+  "MaterialID" INT NOT NULL,
+  "SupplierID" INT NOT NULL,
+  PRIMARY KEY ("MaterialID", "SupplierID"),
+  CONSTRAINT "FK_MaterialSupplier_Supplier"
+    FOREIGN KEY ("SupplierID")
+    REFERENCES "Supplier" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT "FK_MaterialSupplier_Material"
+    FOREIGN KEY ("MaterialID")
+    REFERENCES "Material" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.ProductMaterial
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "ProductMaterial" (
+  "ProductID" INT NOT NULL,
+  "MaterialID" INT NOT NULL,
+  "Count" DOUBLE PRECISION,
+  PRIMARY KEY ("ProductID", "MaterialID"),
+  CONSTRAINT "FK_ProductMaterial_Material"
+    FOREIGN KEY ("MaterialID")
+    REFERENCES "Material" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT "FK_ProductMaterial_Product"
+    FOREIGN KEY ("ProductID")
+    REFERENCES "Product" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.Agent
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "Agent" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(150) NOT NULL,
+  "AgentTypeID" INT NOT NULL,
+  "Address" VARCHAR(300),
+  "INN" VARCHAR(12) NOT NULL,
+  "KPP" VARCHAR(9),
+  "DirectorName" VARCHAR(100),
+  "Phone" VARCHAR(20) NOT NULL,
+  "Email" VARCHAR(255),
+  "Logo" VARCHAR(100),
+  "Priority" INT NOT NULL,
+  CONSTRAINT "FK_Agent_AgentType"
+    FOREIGN KEY ("AgentTypeID")
+    REFERENCES "AgentType" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.ProductSale
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "ProductSale" (
+  "ID" SERIAL PRIMARY KEY,
+  "AgentID" INT NOT NULL,
+  "ProductID" INT NOT NULL,
+  "SaleDate" DATE NOT NULL,
+  "ProductCount" INT NOT NULL,
+  CONSTRAINT "FK_ProductSale_Agent"
+    FOREIGN KEY ("AgentID")
+    REFERENCES "Agent" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT "FK_ProductSale_Product"
+    FOREIGN KEY ("ProductID")
+    REFERENCES "Product" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.Shop
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "Shop" (
+  "ID" SERIAL PRIMARY KEY,
+  "Title" VARCHAR(150) NOT NULL,
+  "Address" VARCHAR(300),
+  "AgentID" INT NOT NULL,
+  CONSTRAINT "FK_Shop_Agent"
+    FOREIGN KEY ("AgentID")
+    REFERENCES "Agent" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.MaterialCountHistory
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "MaterialCountHistory" (
+  "ID" SERIAL PRIMARY KEY,
+  "MaterialID" INT NOT NULL,
+  "ChangeDate" TIMESTAMP(6) NOT NULL,
+  "CountValue" DOUBLE PRECISION NOT NULL,
+  CONSTRAINT "FK_MaterialCountHistory_Material"
+    FOREIGN KEY ("MaterialID")
+    REFERENCES "Material" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.ProductCostHistory
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "ProductCostHistory" (
+  "ID" SERIAL PRIMARY KEY,
+  "ProductID" INT NOT NULL,
+  "ChangeDate" TIMESTAMP(6) NOT NULL,
+  "CostValue" DECIMAL(10,2) NOT NULL,
+  CONSTRAINT "FK_ProductCostHistory_Product"
+    FOREIGN KEY ("ProductID")
+    REFERENCES "Product" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------------------------------------
+-- Table public.AgentPriorityHistory
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS "AgentPriorityHistory" (
+  "ID" SERIAL PRIMARY KEY,
+  "AgentID" INT NOT NULL,
+  "ChangeDate" TIMESTAMP(6) NOT NULL,
+  "PriorityValue" INT NOT NULL,
+  CONSTRAINT "FK_AgentPriorityHistory_Agent"
+    FOREIGN KEY ("AgentID")
+    REFERENCES "Agent" ("ID")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- Включаем проверку внешних ключей
+SET session_replication_role = 'origin';   -- Отключаем проверку внешних ключей
+SET session_replication_role = 'replica';
+
+INSERT INTO "MaterialType" ("ID", "Title", "DefectedPercent") VALUES
+(1, 'Пресс', 0.0),
+(2, 'Рулон', 0.0),
+(3, 'Гранулы', 0.0),
+(4, 'Нарезка', 0.0);
+
+-- Вставка данных в таблицу ProductType
+INSERT INTO "ProductType" ("ID", "Title", "DefectedPercent") VALUES
+(1, 'Три слоя', 0.0),
+(2, 'Два слоя', 0.0),
+(3, 'Детская', 0.0),
+(4, 'Супер мягкая', 0.0),
+(5, 'Один слой', 0.0);
+
+-- Вставка данных в таблицу Product
+INSERT INTO "Product" ("ID", "Title", "ProductTypeID", "ArticleNumber", "Description", "Image", "ProductionPersonCount", "ProductionWorkshopNumber", "MinCostForAgent") VALUES
+(1, 'Полотенце 28М Клубника', 1, '334385', NULL, '\\products\\paper_20.jpg', 2, 6, 9208.00),
+(2, 'Набор 24М Дыня', 2, '337632', NULL, NULL, 5, 5, 11471.00),
+(3, 'Набор 9М Бриз', 2, '259548', NULL, NULL, 4, 5, 2317.00),
+(4, 'Набор 50М Клубника', 3, '278721', NULL, NULL, 3, 1, 14220.00),
+(5, 'Полотенце 24М Дыня', 2, '264493', NULL, NULL, 5, 10, 10479.00),
+(6, 'Бумага 21М Дыня', 4, '366160', NULL, '\\products\\paper_2.jpg', 1, 2, 11064.00),
+(7, 'Полотенце 37М Клубника', 5, '292358', NULL, NULL, 4, 2, 3961.00),
+(8, 'Набор 6М Бриз', 5, '289779', NULL, NULL, 1, 6, 14154.00),
+(9, 'Бумага 37М Клубника', 3, '442634', NULL, '\\products\\paper_14.jpg', 5, 4, 12664.00),
+(10, 'Набор 41М Дыня', 5, '385037', NULL, '\\products\\paper_21.jpg', 5, 9, 3295.00),
+(11, 'Бумага 26М Ваниль', 4, '444337', NULL, NULL, 4, 4, 3007.00),
+(12, 'Бумага 50М Ваниль', 3, '454479', NULL, NULL, 3, 9, 3163.00),
+(13, 'Набор 25М Бриз', 5, '434113', NULL, NULL, 4, 4, 13047.00),
+(14, 'Бумага 32М Бриз', 3, '379800', NULL, NULL, 1, 7, 6832.00),
+(15, 'Полотенце 41М Дыня', 3, '239349', NULL, NULL, 2, 9, 6238.00),
+(16, 'Бумага 9М Ваниль', 3, '446348', NULL, NULL, 3, 1, 13568.00),
+(17, 'Бумага 3М Бриз', 2, '260492', NULL, NULL, 1, 9, 8278.00),
+(18, 'Бумага 5М Дыня', 5, '256862', NULL, '\\products\\paper_5.jpg', 5, 5, 3712.00),
+(19, 'Полотенце 16М Ваниль', 4, '259488', NULL, NULL, 3, 6, 10095.00),
+(20, 'Бумага 44М Бриз', 5, '422185', NULL, NULL, 2, 5, 6441.00),
+(21, 'Набор 19М Дыня', 4, '382063', NULL, NULL, 1, 7, 2373.00),
+(22, 'Бумага 29М Клубника', 5, '334943', NULL, NULL, 1, 10, 5997.00),
+(23, 'Полотенце 27М Дыня', 2, '238686', NULL, NULL, 2, 2, 7864.00),
+(24, 'Набор 11М Дыня', 2, '450659', NULL, '\\products\\paper_16.jpg', 3, 7, 5956.00),
+(25, 'Полотенце 48М Клубника', 4, '292206', NULL, NULL, 3, 3, 9801.00),
+(26, 'Полотенце 16М Бриз', 1, '418298', NULL, NULL, 2, 1, 7342.00),
+(27, 'Полотенце 14М Клубника', 2, '309862', NULL, '\\products\\paper_17.jpg', 4, 8, 10682.00),
+(28, 'Полотенце 43М Клубника', 4, '425641', NULL, NULL, 2, 6, 14151.00),
+(29, 'Набор 19М Бриз', 3, '277950', NULL, NULL, 5, 9, 9962.00),
+(30, 'Набор 32М Клубника', 4, '351062', NULL, NULL, 3, 8, 4450.00),
+(31, 'Набор 26М Дыня', 2, '279801', NULL, NULL, 2, 1, 4628.00),
+(32, 'Бумага 15М Клубника', 2, '449359', NULL, NULL, 3, 7, 10009.00),
+(33, 'Полотенце 45М Бриз', 3, '303994', NULL, '\\products\\paper_6.jpg', 2, 1, 13081.00),
+(34, 'Набор 50М Бриз', 2, '414595', NULL, '\\products\\paper_8.jpg', 4, 6, 10750.00),
+(35, 'Набор 16М Дыня', 5, '376834', NULL, NULL, 4, 6, 11927.00),
+(36, 'Бумага 45М Бриз', 3, '374276', NULL, NULL, 3, 9, 13605.00),
+(37, 'Бумага 45М Клубника', 4, '400484', NULL, NULL, 3, 4, 3475.00),
+(38, 'Бумага 16М Дыня', 4, '262257', NULL, NULL, 5, 2, 9107.00),
+(39, 'Набор 40М Дыня', 3, '346154', NULL, NULL, 4, 8, 3427.00),
+(40, 'Бумага 33М Бриз', 2, '347239', NULL, NULL, 5, 9, 13767.00),
+(41, 'Полотенце 45М Клубника', 1, '352034', NULL, NULL, 2, 5, 11939.00),
+(42, 'Набор 43М Клубника', 5, '443538', NULL, NULL, 1, 10, 13786.00),
+(43, 'Набор 34М Ваниль', 4, '316033', NULL, NULL, 1, 4, 13533.00),
+(44, 'Бумага 32М Дыня', 5, '268393', NULL, NULL, 4, 3, 7424.00),
+(45, 'Бумага 12М Бриз', 5, '426804', NULL, NULL, 1, 4, 10703.00),
+(46, 'Полотенце 6М Ваниль', 2, '324941', NULL, NULL, 1, 2, 5594.00),
+(47, 'Полотенце 47М Клубника', 5, '378723', NULL, NULL, 4, 2, 3871.00),
+(48, 'Полотенце 15М Бриз', 5, '365615', NULL, NULL, 1, 6, 13013.00),
+(49, 'Набор 9М Дыня', 5, '440942', NULL, NULL, 3, 4, 2580.00),
+(50, 'Набор 17М Клубника', 4, '441239', NULL, NULL, 2, 10, 14863.00),
+(51, 'Набор 5М Бриз', 2, '278382', NULL, NULL, 3, 9, 7325.00),
+(52, 'Набор 29М Ваниль', 1, '344868', NULL, '\\products\\paper_4.jpg', 1, 9, 7618.00),
+(53, 'Набор 31М Дыня', 5, '449401', NULL, NULL, 5, 10, 5236.00),
+(54, 'Набор 45М Бриз', 2, '349802', NULL, NULL, 1, 8, 12040.00),
+(55, 'Бумага 13М Дыня', 1, '348651', NULL, NULL, 3, 8, 3477.00),
+(56, 'Набор 24М Клубника', 3, '296007', NULL, NULL, 2, 3, 14162.00),
+(57, 'Набор 10М Дыня', 5, '431234', NULL, '\\products\\paper_22.jpg', 4, 9, 3816.00),
+(58, 'Бумага 12М Клубника', 5, '456129', NULL, '\\products\\paper_1.jpg', 3, 4, 6467.00),
+(59, 'Полотенце 11М Дыня', 4, '400418', NULL, '\\products\\paper_25.jpg', 2, 7, 11660.00),
+(60, 'Набор 42М Дыня', 3, '390914', NULL, '\\products\\paper_13.jpg', 5, 10, 14344.00),
+(61, 'Бумага 5М Бриз', 5, '345239', NULL, NULL, 1, 8, 9243.00),
+(62, 'Набор 14М Дыня', 1, '373939', NULL, NULL, 2, 3, 3382.00),
+(63, 'Бумага 33М Клубника', 1, '252485', NULL, '\\products\\paper_0.jpg', 3, 6, 4240.00),
+(64, 'Набор 34М Клубника', 2, '381110', NULL, NULL, 3, 1, 2372.00),
+(65, 'Полотенце 14М Дыня', 2, '331688', NULL, NULL, 2, 8, 10330.00),
+(66, 'Бумага 40М Бриз', 2, '326200', NULL, '\\products\\paper_19.jpg', 5, 1, 12927.00),
+(67, 'Бумага 20М Клубника', 5, '253218', NULL, NULL, 2, 6, 11684.00),
+(68, 'Бумага 50М Бриз', 3, '340583', NULL, '\\products\\paper_15.jpg', 4, 7, 6788.00),
+(69, 'Полотенце 23М Ваниль', 1, '437519', NULL, NULL, 1, 10, 3317.00),
+(70, 'Набор 8М Дыня', 5, '240580', NULL, NULL, 5, 2, 7465.00),
+(71, 'Бумага 10М Клубника', 2, '275591', NULL, '\\products\\paper_7.jpg', 4, 8, 13600.00),
+(72, 'Набор 41М Клубника', 4, '281425', NULL, '\\products\\paper_23.jpg', 4, 6, 9908.00),
+(73, 'Набор 10М Ваниль', 4, '261465', NULL, '\\products\\paper_12.jpg', 5, 3, 13028.00),
+(74, 'Полотенце 17М Бриз', 2, '309067', NULL, '\\products\\paper_24.jpg', 1, 6, 13825.00),
+(75, 'Полотенце 27М Ваниль', 2, '278463', NULL, '\\products\\paper_10.jpg', 3, 5, 3978.00),
+(76, 'Полотенце 50М Ваниль', 1, '310212', NULL, '\\products\\paper_11.jpg', 1, 10, 13204.00),
+(77, 'Набор 20М Бриз', 5, '377042', NULL, '\\products\\paper_9.jpg', 5, 9, 9227.00),
+(78, 'Полотенце 47М Дыня', 4, '294441', NULL, NULL, 4, 5, 11460.00),
+(79, 'Бумага 29М Дыня', 1, '332522', NULL, '\\products\\paper_18.jpg', 3, 6, 5439.00),
+(80, 'Полотенце 44М Ваниль', 5, '357053', NULL, NULL, 5, 1, 3396.00),
+(81, 'Полотенце 7М Ваниль', 3, '397143', NULL, NULL, 2, 9, 2868.00),
+(82, 'Бумага 49М Бриз', 1, '414339', NULL, NULL, 1, 6, 10786.00),
+(83, 'Полотенце 7М Бриз', 2, '350515', NULL, NULL, 2, 2, 4986.00),
+(84, 'Полотенце 25М Бриз', 1, '258695', NULL, NULL, 1, 8, 3631.00),
+(85, 'Полотенце 17М Ваниль', 4, '403054', NULL, NULL, 2, 9, 5048.00),
+(86, 'Бумага 14М Бриз', 3, '310507', NULL, NULL, 1, 3, 7846.00),
+(87, 'Набор 40М Бриз', 2, '353930', NULL, NULL, 2, 8, 12767.00),
+(88, 'Набор 22М Клубника', 1, '360424', NULL, NULL, 4, 3, 13524.00),
+(89, 'Бумага 13М Бриз', 2, '349861', NULL, NULL, 4, 6, 3842.00),
+(90, 'Бумага 7М Ваниль', 4, '290729', NULL, NULL, 4, 4, 6934.00),
+(91, 'Набор 24М Ваниль', 5, '374263', NULL, NULL, 5, 9, 3907.00),
+(92, 'Набор 43М Дыня', 1, '330360', NULL, NULL, 5, 4, 5867.00),
+(93, 'Полотенце 33М Бриз', 4, '297840', NULL, NULL, 4, 1, 4611.00),
+(94, 'Набор 12М Бриз', 3, '349614', NULL, '\\products\\paper_3.jpg', 1, 7, 2551.00),
+(95, 'Бумага 38М Ваниль', 1, '416066', NULL, NULL, 2, 2, 12175.00),
+(96, 'Бумага 20М Бриз', 3, '285792', NULL, NULL, 3, 7, 14370.00),
+(97, 'Бумага 28М Дыня', 3, '298632', NULL, NULL, 4, 4, 14671.00),
+(98, 'Бумага 10М Дыня', 5, '446103', NULL, NULL, 1, 3, 13975.00),
+(99, 'Набор 22М Бриз', 3, '443382', NULL, NULL, 3, 5, 4501.00),
+(100, 'Набор 18М Ваниль', 1, '331270', NULL, NULL, 4, 8, 11171.00);
+
+-- Вставка данных в таблицу Material
+INSERT INTO "Material" ("ID", "Title", "CountInPack", "Unit", "CountInStock", "MinCount", "Description", "Cost", "Image", "MaterialTypeID") VALUES
+(1, 'Спрессованный материал серый 0x2', 5, 'м', 140.0, 49.0, NULL, 33128.00, NULL, 1),
+(2, 'Рулон бумаги зеленый 1x1', 3, 'м', 634.0, 36.0, NULL, 26841.00, NULL, 2),
+(3, 'Спрессованный материал розовый 2x1', 8, 'м', 636.0, 21.0, NULL, 52606.00, NULL, 1),
+(4, 'Гранулы для бумаги розовый 2x2', 10, 'л', 661.0, 16.0, NULL, 10608.00, NULL, 3),
+(5, 'Спрессованный материал белый 1x1', 7, 'кг', 843.0, 16.0, NULL, 43440.00, NULL, 1),
+(6, 'Рулон бумаги белый 1x0', 1, 'м', 501.0, 49.0, NULL, 15833.00, NULL, 2),
+(7, 'Переработка бумаги синий 0x3', 9, 'м', 958.0, 32.0, NULL, 14180.00, NULL, 4),
+(8, 'Рулон бумаги цветной 2x0', 3, 'м', 386.0, 46.0, NULL, 35544.00, NULL, 2),
+(9, 'Рулон бумаги зеленый 2x2', 8, 'кг', 593.0, 20.0, NULL, 55016.00, NULL, 2),
+(10, 'Рулон бумаги белый 3x2', 4, 'кг', 16.0, 31.0, NULL, 53759.00, NULL, 2),
+(11, 'Переработка бумаги серый 3x3', 10, 'м', 89.0, 20.0, NULL, 49391.00, NULL, 4),
+(12, 'Гранулы для бумаги синий 1x2', 6, 'л', 112.0, 34.0, NULL, 25624.00, NULL, 3),
+(13, 'Рулон бумаги серый 3x3', 3, 'м', 596.0, 8.0, NULL, 50247.00, NULL, 2),
+(14, 'Спрессованный материал цветной 1x3', 3, 'м', 772.0, 40.0, NULL, 51672.00, NULL, 1),
+(15, 'Рулон бумаги синий 2x2', 6, 'кг', 363.0, 47.0, NULL, 38450.00, NULL, 2),
+(16, 'Гранулы для бумаги розовый 0x3', 4, 'л', 379.0, 41.0, NULL, 3868.00, NULL, 3),
+(17, 'Переработка бумаги цветной 1x3', 6, 'кг', 32.0, 34.0, NULL, 37930.00, NULL, 4),
+(18, 'Гранулы для бумаги цветной 0x1', 5, 'л', 759.0, 28.0, NULL, 9216.00, NULL, 3),
+(19, 'Рулон бумаги цветной 1x2', 10, 'м', 246.0, 37.0, NULL, 5016.00, NULL, 2),
+(20, 'Переработка бумаги серый 1x2', 8, 'м', 516.0, 49.0, NULL, 35981.00, NULL, 4),
+(21, 'Спрессованный материал синий 0x2', 3, 'кг', 514.0, 40.0, NULL, 6555.00, NULL, 1),
+(22, 'Переработка бумаги синий 1x2', 4, 'м', 81.0, 32.0, NULL, 47873.00, NULL, 4),
+(23, 'Спрессованный материал цветной 1x2', 1, 'м', 429.0, 47.0, NULL, 15802.00, NULL, 1),
+(24, 'Рулон бумаги розовый 2x1', 1, 'м', 349.0, 9.0, NULL, 36163.00, NULL, 2),
+(25, 'Рулон бумаги белый 3x3', 2, 'кг', 201.0, 46.0, NULL, 51261.00, NULL, 2),
+(26, 'Рулон бумаги цветной 2x2', 10, 'кг', 534.0, 46.0, NULL, 50776.00, NULL, 2),
+(27, 'Спрессованный материал розовый 2x3', 3, 'м', 552.0, 7.0, NULL, 4657.00, NULL, 1),
+(28, 'Рулон бумаги розовый 3x2', 9, 'м', 144.0, 41.0, NULL, 51776.00, NULL, 2),
+(29, 'Переработка бумаги синий 0x1', 7, 'м', 97.0, 30.0, NULL, 47937.00, NULL, 4),
+(30, 'Спрессованный материал розовый 1x2', 7, 'м', 509.0, 26.0, NULL, 10604.00, NULL, 1),
+(31, 'Рулон бумаги цветной 1x3', 10, 'кг', 149.0, 13.0, NULL, 22724.00, NULL, 2),
+(32, 'Рулон бумаги синий 3x2', 9, 'м', 508.0, 16.0, NULL, 25561.00, NULL, 2),
+(33, 'Рулон бумаги зеленый 2x3', 2, 'м', 181.0, 35.0, NULL, 45388.00, NULL, 2),
+(34, 'Гранулы для бумаги розовый 0x2', 7, 'кг', 37.0, 50.0, NULL, 17227.00, NULL, 3),
+(35, 'Переработка бумаги цветной 0x0', 9, 'м', 508.0, 19.0, NULL, 51147.00, NULL, 4),
+(36, 'Переработка бумаги серый 0x2', 3, 'м', 167.0, 17.0, NULL, 10248.00, NULL, 4),
+(37, 'Гранулы для бумаги цветной 0x3', 10, 'кг', 962.0, 33.0, NULL, 35922.00, NULL, 3),
+(38, 'Рулон бумаги зеленый 3x3', 3, 'м', 861.0, 45.0, NULL, 37283.00, NULL, 2),
+(39, 'Рулон бумаги белый 0x3', 2, 'м', 933.0, 50.0, NULL, 7253.00, NULL, 2),
+(40, 'Рулон бумаги синий 3x1', 3, 'м', 720.0, 11.0, NULL, 44675.00, NULL, 2),
+(41, 'Спрессованный материал белый 3x3', 8, 'м', 942.0, 12.0, NULL, 17600.00, NULL, 1),
+(42, 'Рулон бумаги белый 1x3', 2, 'кг', 382.0, 10.0, NULL, 32770.00, NULL, 2),
+(43, 'Переработка бумаги белый 3x0', 10, 'м', 247.0, 11.0, NULL, 39500.00, NULL, 4),
+(44, 'Гранулы для бумаги синий 1x3', 10, 'л', 841.0, 18.0, NULL, 38700.00, NULL, 3),
+(45, 'Спрессованный материал синий 3x1', 10, 'м', 270.0, 50.0, NULL, 38809.00, NULL, 1),
+(46, 'Спрессованный материал цветной 0x0', 6, 'м', 754.0, 24.0, NULL, 4611.00, NULL, 1),
+(47, 'Переработка бумаги цветной 0x1', 8, 'м', 833.0, 34.0, NULL, 53875.00, NULL, 4),
+(48, 'Спрессованный материал цветной 1x0', 8, 'м', 856.0, 26.0, NULL, 12817.00, NULL, 1),
+(49, 'Переработка бумаги синий 0x2', 9, 'кг', 709.0, 47.0, NULL, 23157.00, NULL, 4),
+(50, 'Переработка бумаги белый 2x0', 5, 'м', 794.0, 17.0, NULL, 21637.00, NULL, 4);
+
+-- Вставка данных в таблицу ProductMaterial
+INSERT INTO "ProductMaterial" ("ProductID", "MaterialID", "Count") VALUES
+(63, 24, 20.0),
+(71, 6, 1.0),
+(37, 6, 4.0),
+(58, 24, 18.0),
+(94, 6, 3.0),
+(1, 24, 9.0),
+(2, 23, 15.0),
+(63, 25, 3.0),
+(11, 39, 12.0),
+(19, 25, 20.0),
+(94, 42, 4.0),
+(47, 33, 4.0),
+(52, 39, 12.0),
+(28, 25, 8.0),
+(1, 25, 4.0),
+(59, 42, 3.0),
+(57, 42, 4.0),
+(67, 42, 6.0),
+(70, 2, 1.0),
+(70, 8, 1.0),
+(79, 38, 15.0),
+(44, 13, 3.0),
+(52, 27, 6.0),
+(11, 40, 15.0),
+(66, 13, 1.0),
+(18, 13, 6.0),
+(10, 2, 16.0),
+(92, 38, 19.0),
+(33, 21, 5.0),
+(67, 27, 6.0),
+(96, 27, 14.0),
+(16, 40, 8.0),
+(99, 2, 3.0),
+(34, 40, 6.0),
+(99, 36, 2.0),
+(55, 14, 9.0),
+(76, 13, 10.0),
+(90, 40, 15.0),
+(47, 40, 14.0),
+(41, 13, 3.0),
+(68, 8, 2.0),
+(19, 21, 4.0),
+(24, 14, 11.0),
+(33, 10, 4.0),
+(16, 22, 15.0),
+(64, 16, 1.0),
+(70, 16, 16.0),
+(92, 16, 11.0),
+(78, 16, 1.0),
+(94, 18, 20.0),
+(10, 18, 18.0),
+(40, 18, 18.0),
+(72, 18, 6.0),
+(47, 18, 3.0),
+(11, 46, 11.0),
+(58, 15, 19.0),
+(66, 12, 18.0),
+(77, 46, 19.0),
+(41, 17, 3.0),
+(76, 46, 19.0),
+(24, 12, 6.0),
+(27, 46, 7.0),
+(47, 12, 14.0),
+(64, 34, 14.0),
+(18, 34, 5.0),
+(32, 29, 15.0),
+(92, 5, 13.0),
+(67, 5, 10.0),
+(27, 5, 5.0),
+(72, 30, 20.0),
+(79, 41, 8.0),
+(11, 48, 19.0),
+(1, 3, 13.0),
+(66, 48, 18.0),
+(95, 47, 8.0),
+(40, 32, 20.0),
+(41, 32, 4.0),
+(41, 49, 14.0),
+(19, 7, 8.0),
+(77, 35, 10.0),
+(47, 28, 5.0),
+(63, 35, 1.0),
+(33, 28, 10.0),
+(18, 7, 19.0),
+(66, 32, 16.0),
+(52, 28, 17.0),
+(100, 44, 8.0),
+(60, 37, 17.0),
+(76, 37, 10.0),
+(52, 44, 11.0),
+(49, 43, 4.0),
+(34, 26, 16.0),
+(71, 26, 11.0),
+(71, 11, 4.0),
+(66, 44, 12.0),
+(92, 44, 16.0),
+(95, 11, 3.0),
+(32, 43, 4.0),
+(63, 37, 10.0),
+(72, 44, 6.0);
+
+CREATE TABLE IF NOT EXISTS "Users" (
+    "ID" SERIAL PRIMARY KEY,
+    "LastName" VARCHAR(100) NOT NULL,
+    "FirstName" VARCHAR(100) NOT NULL,
+    "MiddleName" VARCHAR(100),
+    "Login" VARCHAR(50) UNIQUE NOT NULL,
+    "PasswordHash" VARCHAR(255) NOT NULL,
+    "Role" VARCHAR(20) NOT NULL
+);
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE OR REPLACE FUNCTION register_user(
+    p_lastname VARCHAR,
+    p_firstname VARCHAR,
+    p_middlename VARCHAR,
+    p_login VARCHAR,
+    p_password VARCHAR,
+    p_role VARCHAR
+) RETURNS VOID AS $$
+BEGIN
+    INSERT INTO "Users" ("LastName", "FirstName", "MiddleName", "Login", "PasswordHash", "Role")
+    VALUES (
+        p_lastname,
+        p_firstname,
+        p_middlename,
+        p_login,
+        crypt(p_password, gen_salt('bf')), -- Хеширование пароля
+        p_role
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION authenticate_user(
+    p_login VARCHAR,
+    p_password VARCHAR
+) RETURNS TABLE (id INT, role VARCHAR) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT "ID", "Role"
+    FROM "Users"
+    WHERE "Login" = p_login 
+      AND "PasswordHash" = crypt(p_password, "PasswordHash"); -- Проверка хеша
+END;
+$$ LANGUAGE plpgsql;

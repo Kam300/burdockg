@@ -1,73 +1,73 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\burdockg\\",
+  "WorkspaceRootPath": "E:\\burdockg\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|c:\\burdockg\\burdockg\\editproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|e:\\burdockg\\burdockg\\editproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\editproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|c:\\burdockg\\burdockg\\addproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\addproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\addproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|c:\\burdockg\\burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|c:\\burdockg\\burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|c:\\burdockg\\burdockg\\profile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\profile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\profile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\authorization.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\authorization.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\authorization.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\menu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\menu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\menu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|C:\\burdockg\\burdockg\\registration.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\registration.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\registration.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\burdockg\\burdockg\\obj\\Debug\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\burdockg\\burdockg\\obj\\Debug\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:burdockg\\obj\\Debug\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -80,6 +80,22 @@
           "DockedWidth": 200,
           "SelectedChildIndex": -1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{379d9821-1bd9-3bba-ac19-d56e8e1de0ee}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d84ee353-0bef-5a41-a649-8f89aca5d84d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
@@ -150,9 +166,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "EditProduct.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\EditProduct.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\EditProduct.xaml",
               "RelativeDocumentMoniker": "burdockg\\EditProduct.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\EditProduct.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\EditProduct.xaml",
               "RelativeToolTip": "burdockg\\EditProduct.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-19T17:17:37.29Z",
@@ -162,144 +178,134 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AddProduct.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\AddProduct.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\AddProduct.xaml",
               "RelativeDocumentMoniker": "burdockg\\AddProduct.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\AddProduct.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\AddProduct.xaml",
               "RelativeToolTip": "burdockg\\AddProduct.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:59:33.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:59:33.104Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "home.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\home.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\home.xaml",
               "RelativeDocumentMoniker": "burdockg\\home.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\home.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\home.xaml",
               "RelativeToolTip": "burdockg\\home.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:50:32.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:50:32.009Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "home.xaml.cs",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\home.xaml.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\home.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\home.xaml.cs",
-              "ToolTip": "C:\\burdockg\\burdockg\\home.xaml.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\home.xaml.cs",
               "RelativeToolTip": "burdockg\\home.xaml.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T17:06:52.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T17:06:52.381Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "profile.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\profile.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\profile.xaml",
               "RelativeDocumentMoniker": "burdockg\\profile.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\profile.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\profile.xaml",
               "RelativeToolTip": "burdockg\\profile.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:45:15.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.47Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "menu.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\menu.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\menu.xaml",
               "RelativeDocumentMoniker": "burdockg\\menu.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\menu.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\menu.xaml",
               "RelativeToolTip": "burdockg\\menu.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:45:15.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.511Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "Registration.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\Registration.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\Registration.xaml",
               "RelativeDocumentMoniker": "burdockg\\Registration.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\Registration.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\Registration.xaml",
               "RelativeToolTip": "burdockg\\Registration.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:45:15.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.516Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Authorization.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\Authorization.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\Authorization.xaml",
               "RelativeDocumentMoniker": "burdockg\\Authorization.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\Authorization.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\Authorization.xaml",
               "RelativeToolTip": "burdockg\\Authorization.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:45:15.518Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.518Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\MainWindow.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\MainWindow.xaml",
               "RelativeDocumentMoniker": "burdockg\\MainWindow.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\MainWindow.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\MainWindow.xaml",
               "RelativeToolTip": "burdockg\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:45:15.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.555Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "App.config",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\App.config",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\App.config",
               "RelativeDocumentMoniker": "burdockg\\App.config",
-              "ToolTip": "C:\\burdockg\\burdockg\\App.config",
+              "ToolTip": "E:\\burdockg\\burdockg\\App.config",
               "RelativeToolTip": "burdockg\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-03-19T16:45:15.519Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.519Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "Authorization.xaml.cs",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\Authorization.xaml.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\Authorization.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\Authorization.xaml.cs",
-              "ToolTip": "C:\\burdockg\\burdockg\\Authorization.xaml.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\Authorization.xaml.cs",
               "RelativeToolTip": "burdockg\\Authorization.xaml.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAACEAAAAAAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAToSURBVFhH7ZfNT9tmHMe/fuzEdgDjvACBRASqMDpIpZJodHRdtUrdpGqHSbtObQ8cqrIT150m7Q/IcVK103pb9yJNU6e2m1TUakUtRGoHtINKHYVAU0ZCQurYjv08O7SgxOCBGNs0iY/0HPLz75t89LxEfji48Nl3j4YJuFFFFvrbmjxQJH6GUaTPvBH5wtm7nxBnYQOfh0Dy8GAMKGgWskVT/KNcbf9\u002BInv4amaphTHmmv07uH5pW7MXHaoXlDH8uvgCY4\u002BKwfmC/q4A9jHH6NBXdxZEZ2Y/EPDRVcVZBABQIkki4TWDYiqrYbVcVUNNnrcrFj0qEJRjDVzm8uXLpbt37yKfzzvTm8TjcRw7dgytra3W\u002Bvq6eerUKcvZUwuHs9c\u002BdRYBINXVNNAdlIfWDatlLleBUaU4Em1AX4dkdPuF8ZPdwp2ZBxPG7du38fz5c2ccgiCAEIJEIoFkMolQKPQYwHgqlXrs7K2Fw9lra84iAAiE83oE4mUMvGUzeAQOLU0eRFUPO/O6bH5wpNGYeTDJ3IR4ngfP80gkEhgYGEAwGPyZUvr54ODgT87eWjicvb7tqYm3ir1Rv9RfMal/oWDAogy9YRl97TKOH5LxVreMpYUnmJ2dRbFYrMtSSpHL5ZDL5dDe3o5YLAZVVadVVb0RDodv2bY9PTg4\u002BFtd6BUczv3Y7ywCwCfvxz6M\u002BsVzT1b0\u002BK3ZEoqahZO9zTjRo\u002BBQyItDIQ\u002BMyguUSiVUq9W6rGmamJiYwL1790AIgc/nQyQSKff19a3GYrH7jLEvU6nUN3WhV3DOwgZf//J0GMDoQsHov7/wArpJcbxHwWB3I/wygd9HwKgN27bBGKvL6rqOsbEx3Lx5E4ZhgBCCcDiMnp4ehMPhp6IofhsOh38AMF8qlX6v3eiux35pTcdyqQrCcTgSacA7h1UkOmS0KQJ8XsC2LVBKt8hsB6UUa2trmJubw8OHDwPFYvE0Y2wEwJt\u002Bv7/u78NVCJSC2RaaJQ69YQlHO33oDHihiBy8hIHaNiilztQWGGNgjEHTNDx79gzZbLaxUCgk8vn86Xw\u002BH19ZWRFq\u002B12F4iHgtSDQHeAQVXmEGniIPINlvZyZvUAphaZpmJ\u002BfRyaTQSaTweTkZF2Pq1CHpKPDZ6DdZ6GtkYPfR\u002BDdpRDHcRAEAZIkbQ5RFCGKIiilWF5exvT0NKamprYI8XWfakgmk8mlpaWhSqXSKkkSZFne9Z7ZQFEUdHZ2oqura3O0tLTAtm0Ui0WDUjpOKR2fmZkxNjKuQm1tbclsNjtEKW0NBoNQVXXXMoQQKIqCaDRaJ9PV1QVVVZHP57G4uGgAGGeM1Qm5LpmmadA0Dbquw7Zt5\u002BMdcS5Z7dLxPA/G2LZL7ypk2/bmftntzOwHfym0cWT/TVyF/isOhHbiQGgnDoR24kBoJw6EduL/I8TzL1\u002BVKKUwTRO6ru/LMAwDtm2D4zgQsvXnXa9B58\u002BfHwYwGggE\u002BiORCAKBgLNlT2iahsXFRSwvL5cApEVRTF\u002B6dGnzpukqdOHChWEAo5TSfsuy9vSSth2EEAiCAJ7nSwDSjLHdCY2MjJxgjL1nmmaHrutbbqd7hed5yLIMURR1SukNn893PZ1OVzaeuwpdvHjRz3Fc0DRNsVwu75uQx\u002BOB1\u002BuFoii2ZVn51dXV1StXruzP9P8T/AmvY2O\u002BvRTZMgAAAABJRU5ErkJggg==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH\u002BSURBVDhP3ZLPa9NgHIefpkmbtM22xqVZ19Egc5uTHhxY1F48zYt38aT/xa69efLkwYHgwatD8OgPNupl7D6msIHWlrZKQ1tpsUmTJh40weH04NEHXnjh8/08vC/vG\u002BMnD14cbySSwqOUJMipZHxLzA7f3i6VXCAIZ84ixr2XFwHuXDHWC3OJanswWV1bSB5cnvfuv3q23RoMBgFAPp\u002BnXC7bpml\u002BqVQq41Ag4gdbAK/f9bTF2WR\u002B6qMoYnDtquE/LCwt2aqqMp1O8X2f0Wj0YTgcPmk0GrVisTj\u002BIRDijwE2iunVC7nU8nji566vZJTzhcT6uc1NXNel3\u002B\u002Bzt7fHycnJCiAD7O/v1yqVyljk6c0DgLtvjh3iwmhGkVhbSDIjB6hyAQBFUQDodDoZ4IYgCLamae\u002BBuhDeZdZtY8pfuZSLMSdD4PthhCRJ5HI5dF3H87zM4eHhcq1WU4BYPBxaNLS88214y9C1pUwmHZVDgWmalEoldF2nXq9/7nQ6z4\u002BOjqzoBO12G8uymEwmp8oAoiiiaRqGYZDNZpEkKcoigeu6BMFfn/xMIsG/8j8JJEnCdV263S6tVuuPy7IsPM\u002BLBGK4SafTdr/f/7S7uzsXj0ff4zd838dxnI\u002BapjlAEAuDarWaaDab87Zty7Ztn279gizLqKrq9Hq97s7OzuQ73VDKWcoflKwAAAAASUVORK5CYII=",
               "WhenOpened": "2025-03-19T16:45:15.52Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "App.g.i.cs",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\obj\\Debug\\App.g.i.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\obj\\Debug\\App.g.i.cs",
               "RelativeDocumentMoniker": "burdockg\\obj\\Debug\\App.g.i.cs",
-              "ToolTip": "C:\\burdockg\\burdockg\\obj\\Debug\\App.g.i.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\obj\\Debug\\App.g.i.cs",
               "RelativeToolTip": "burdockg\\obj\\Debug\\App.g.i.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAawD4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:45:15.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.544Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\App.xaml",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\App.xaml",
               "RelativeDocumentMoniker": "burdockg\\App.xaml",
-              "ToolTip": "C:\\burdockg\\burdockg\\App.xaml",
+              "ToolTip": "E:\\burdockg\\burdockg\\App.xaml",
               "RelativeToolTip": "burdockg\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-19T16:45:15.554Z",
@@ -309,49 +315,48 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "Registration.xaml.cs",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\Registration.xaml.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\Registration.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\Registration.xaml.cs",
-              "ToolTip": "C:\\burdockg\\burdockg\\Registration.xaml.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\Registration.xaml.cs",
               "RelativeToolTip": "burdockg\\Registration.xaml.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAgwB8AAAAYAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAToSURBVFhH7ZfNT9tmHMe/fuzEdgDjvACBRASqMDpIpZJodHRdtUrdpGqHSbtObQ8cqrIT150m7Q/IcVK103pb9yJNU6e2m1TUakUtRGoHtINKHYVAU0ZCQurYjv08O7SgxOCBGNs0iY/0HPLz75t89LxEfji48Nl3j4YJuFFFFvrbmjxQJH6GUaTPvBH5wtm7nxBnYQOfh0Dy8GAMKGgWskVT/KNcbf9\u002BInv4amaphTHmmv07uH5pW7MXHaoXlDH8uvgCY4\u002BKwfmC/q4A9jHH6NBXdxZEZ2Y/EPDRVcVZBABQIkki4TWDYiqrYbVcVUNNnrcrFj0qEJRjDVzm8uXLpbt37yKfzzvTm8TjcRw7dgytra3W\u002Bvq6eerUKcvZUwuHs9c\u002BdRYBINXVNNAdlIfWDatlLleBUaU4Em1AX4dkdPuF8ZPdwp2ZBxPG7du38fz5c2ccgiCAEIJEIoFkMolQKPQYwHgqlXrs7K2Fw9lra84iAAiE83oE4mUMvGUzeAQOLU0eRFUPO/O6bH5wpNGYeTDJ3IR4ngfP80gkEhgYGEAwGPyZUvr54ODgT87eWjicvb7tqYm3ir1Rv9RfMal/oWDAogy9YRl97TKOH5LxVreMpYUnmJ2dRbFYrMtSSpHL5ZDL5dDe3o5YLAZVVadVVb0RDodv2bY9PTg4\u002BFtd6BUczv3Y7ywCwCfvxz6M\u002BsVzT1b0\u002BK3ZEoqahZO9zTjRo\u002BBQyItDIQ\u002BMyguUSiVUq9W6rGmamJiYwL1790AIgc/nQyQSKff19a3GYrH7jLEvU6nUN3WhV3DOwgZf//J0GMDoQsHov7/wArpJcbxHwWB3I/wygd9HwKgN27bBGKvL6rqOsbEx3Lx5E4ZhgBCCcDiMnp4ehMPhp6IofhsOh38AMF8qlX6v3eiux35pTcdyqQrCcTgSacA7h1UkOmS0KQJ8XsC2LVBKt8hsB6UUa2trmJubw8OHDwPFYvE0Y2wEwJt\u002Bv7/u78NVCJSC2RaaJQ69YQlHO33oDHihiBy8hIHaNiilztQWGGNgjEHTNDx79gzZbLaxUCgk8vn86Xw\u002BH19ZWRFq\u002B12F4iHgtSDQHeAQVXmEGniIPINlvZyZvUAphaZpmJ\u002BfRyaTQSaTweTkZF2Pq1CHpKPDZ6DdZ6GtkYPfR\u002BDdpRDHcRAEAZIkbQ5RFCGKIiilWF5exvT0NKamprYI8XWfakgmk8mlpaWhSqXSKkkSZFne9Z7ZQFEUdHZ2oqura3O0tLTAtm0Ui0WDUjpOKR2fmZkxNjKuQm1tbclsNjtEKW0NBoNQVXXXMoQQKIqCaDRaJ9PV1QVVVZHP57G4uGgAGGeM1Qm5LpmmadA0Dbquw7Zt5\u002BMdcS5Z7dLxPA/G2LZL7ypk2/bmftntzOwHfym0cWT/TVyF/isOhHbiQGgnDoR24kBoJw6EduL/I8TzL1\u002BVKKUwTRO6ru/LMAwDtm2D4zgQsvXnXa9B58\u002BfHwYwGggE\u002BiORCAKBgLNlT2iahsXFRSwvL5cApEVRTF\u002B6dGnzpukqdOHChWEAo5TSfsuy9vSSth2EEAiCAJ7nSwDSjLHdCY2MjJxgjL1nmmaHrutbbqd7hed5yLIMURR1SukNn893PZ1OVzaeuwpdvHjRz3Fc0DRNsVwu75uQx\u002BOB1\u002BuFoii2ZVn51dXV1StXruzP9P8T/AmvY2O\u002BvRTZMgAAAABJRU5ErkJggg==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH\u002BSURBVDhP3ZLPa9NgHIefpkmbtM22xqVZ19Egc5uTHhxY1F48zYt38aT/xa69efLkwYHgwatD8OgPNupl7D6msIHWlrZKQ1tpsUmTJh40weH04NEHXnjh8/08vC/vG\u002BMnD14cbySSwqOUJMipZHxLzA7f3i6VXCAIZ84ixr2XFwHuXDHWC3OJanswWV1bSB5cnvfuv3q23RoMBgFAPp\u002BnXC7bpml\u002BqVQq41Ag4gdbAK/f9bTF2WR\u002B6qMoYnDtquE/LCwt2aqqMp1O8X2f0Wj0YTgcPmk0GrVisTj\u002BIRDijwE2iunVC7nU8nji566vZJTzhcT6uc1NXNel3\u002B\u002Bzt7fHycnJCiAD7O/v1yqVyljk6c0DgLtvjh3iwmhGkVhbSDIjB6hyAQBFUQDodDoZ4IYgCLamae\u002BBuhDeZdZtY8pfuZSLMSdD4PthhCRJ5HI5dF3H87zM4eHhcq1WU4BYPBxaNLS88214y9C1pUwmHZVDgWmalEoldF2nXq9/7nQ6z4\u002BOjqzoBO12G8uymEwmp8oAoiiiaRqGYZDNZpEkKcoigeu6BMFfn/xMIsG/8j8JJEnCdV263S6tVuuPy7IsPM\u002BLBGK4SafTdr/f/7S7uzsXj0ff4zd838dxnI\u002BapjlAEAuDarWaaDab87Zty7Ztn279gizLqKrq9Hq97s7OzuQ73VDKWcoflKwAAAAASUVORK5CYII=",
               "WhenOpened": "2025-03-19T16:45:15.517Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\App.xaml.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\App.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\App.xaml.cs",
-              "ToolTip": "C:\\burdockg\\burdockg\\App.xaml.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\App.xaml.cs",
               "RelativeToolTip": "burdockg\\App.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T16:45:15.553Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.553Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "menu.xaml.cs",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\menu.xaml.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\menu.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\menu.xaml.cs",
-              "ToolTip": "C:\\burdockg\\burdockg\\menu.xaml.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\menu.xaml.cs",
               "RelativeToolTip": "burdockg\\menu.xaml.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAYwBkAAAAAAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAToSURBVFhH7ZfNT9tmHMe/fuzEdgDjvACBRASqMDpIpZJodHRdtUrdpGqHSbtObQ8cqrIT150m7Q/IcVK103pb9yJNU6e2m1TUakUtRGoHtINKHYVAU0ZCQurYjv08O7SgxOCBGNs0iY/0HPLz75t89LxEfji48Nl3j4YJuFFFFvrbmjxQJH6GUaTPvBH5wtm7nxBnYQOfh0Dy8GAMKGgWskVT/KNcbf9\u002BInv4amaphTHmmv07uH5pW7MXHaoXlDH8uvgCY4\u002BKwfmC/q4A9jHH6NBXdxZEZ2Y/EPDRVcVZBABQIkki4TWDYiqrYbVcVUNNnrcrFj0qEJRjDVzm8uXLpbt37yKfzzvTm8TjcRw7dgytra3W\u002Bvq6eerUKcvZUwuHs9c\u002BdRYBINXVNNAdlIfWDatlLleBUaU4Em1AX4dkdPuF8ZPdwp2ZBxPG7du38fz5c2ccgiCAEIJEIoFkMolQKPQYwHgqlXrs7K2Fw9lra84iAAiE83oE4mUMvGUzeAQOLU0eRFUPO/O6bH5wpNGYeTDJ3IR4ngfP80gkEhgYGEAwGPyZUvr54ODgT87eWjicvb7tqYm3ir1Rv9RfMal/oWDAogy9YRl97TKOH5LxVreMpYUnmJ2dRbFYrMtSSpHL5ZDL5dDe3o5YLAZVVadVVb0RDodv2bY9PTg4\u002BFtd6BUczv3Y7ywCwCfvxz6M\u002BsVzT1b0\u002BK3ZEoqahZO9zTjRo\u002BBQyItDIQ\u002BMyguUSiVUq9W6rGmamJiYwL1790AIgc/nQyQSKff19a3GYrH7jLEvU6nUN3WhV3DOwgZf//J0GMDoQsHov7/wArpJcbxHwWB3I/wygd9HwKgN27bBGKvL6rqOsbEx3Lx5E4ZhgBCCcDiMnp4ehMPhp6IofhsOh38AMF8qlX6v3eiux35pTcdyqQrCcTgSacA7h1UkOmS0KQJ8XsC2LVBKt8hsB6UUa2trmJubw8OHDwPFYvE0Y2wEwJt\u002Bv7/u78NVCJSC2RaaJQ69YQlHO33oDHihiBy8hIHaNiilztQWGGNgjEHTNDx79gzZbLaxUCgk8vn86Xw\u002BH19ZWRFq\u002B12F4iHgtSDQHeAQVXmEGniIPINlvZyZvUAphaZpmJ\u002BfRyaTQSaTweTkZF2Pq1CHpKPDZ6DdZ6GtkYPfR\u002BDdpRDHcRAEAZIkbQ5RFCGKIiilWF5exvT0NKamprYI8XWfakgmk8mlpaWhSqXSKkkSZFne9Z7ZQFEUdHZ2oqura3O0tLTAtm0Ui0WDUjpOKR2fmZkxNjKuQm1tbclsNjtEKW0NBoNQVXXXMoQQKIqCaDRaJ9PV1QVVVZHP57G4uGgAGGeM1Qm5LpmmadA0Dbquw7Zt5\u002BMdcS5Z7dLxPA/G2LZL7ypk2/bmftntzOwHfym0cWT/TVyF/isOhHbiQGgnDoR24kBoJw6EduL/I8TzL1\u002BVKKUwTRO6ru/LMAwDtm2D4zgQsvXnXa9B58\u002BfHwYwGggE\u002BiORCAKBgLNlT2iahsXFRSwvL5cApEVRTF\u002B6dGnzpukqdOHChWEAo5TSfsuy9vSSth2EEAiCAJ7nSwDSjLHdCY2MjJxgjL1nmmaHrutbbqd7hed5yLIMURR1SukNn893PZ1OVzaeuwpdvHjRz3Fc0DRNsVwu75uQx\u002BOB1\u002BuFoii2ZVn51dXV1StXruzP9P8T/AmvY2O\u002BvRTZMgAAAABJRU5ErkJggg==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH\u002BSURBVDhP3ZLPa9NgHIefpkmbtM22xqVZ19Egc5uTHhxY1F48zYt38aT/xa69efLkwYHgwatD8OgPNupl7D6msIHWlrZKQ1tpsUmTJh40weH04NEHXnjh8/08vC/vG\u002BMnD14cbySSwqOUJMipZHxLzA7f3i6VXCAIZ84ixr2XFwHuXDHWC3OJanswWV1bSB5cnvfuv3q23RoMBgFAPp\u002BnXC7bpml\u002BqVQq41Ag4gdbAK/f9bTF2WR\u002B6qMoYnDtquE/LCwt2aqqMp1O8X2f0Wj0YTgcPmk0GrVisTj\u002BIRDijwE2iunVC7nU8nji566vZJTzhcT6uc1NXNel3\u002B\u002Bzt7fHycnJCiAD7O/v1yqVyljk6c0DgLtvjh3iwmhGkVhbSDIjB6hyAQBFUQDodDoZ4IYgCLamae\u002BBuhDeZdZtY8pfuZSLMSdD4PthhCRJ5HI5dF3H87zM4eHhcq1WU4BYPBxaNLS88214y9C1pUwmHZVDgWmalEoldF2nXq9/7nQ6z4\u002BOjqzoBO12G8uymEwmp8oAoiiiaRqGYZDNZpEkKcoigeu6BMFfn/xMIsG/8j8JJEnCdV263S6tVuuPy7IsPM\u002BLBGK4SafTdr/f/7S7uzsXj0ff4zd838dxnI\u002BapjlAEAuDarWaaDab87Zty7Ztn279gizLqKrq9Hq97s7OzuQ73VDKWcoflKwAAAAASUVORK5CYII=",
               "WhenOpened": "2025-03-19T16:45:15.515Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\burdockg\\burdockg\\MainWindow.xaml.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\burdockg\\burdockg\\MainWindow.xaml.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\MainWindow.xaml.cs",
               "RelativeToolTip": "burdockg\\MainWindow.xaml.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAToSURBVFhH7ZfNT9tmHMe/fuzEdgDjvACBRASqMDpIpZJodHRdtUrdpGqHSbtObQ8cqrIT150m7Q/IcVK103pb9yJNU6e2m1TUakUtRGoHtINKHYVAU0ZCQurYjv08O7SgxOCBGNs0iY/0HPLz75t89LxEfji48Nl3j4YJuFFFFvrbmjxQJH6GUaTPvBH5wtm7nxBnYQOfh0Dy8GAMKGgWskVT/KNcbf9\u002BInv4amaphTHmmv07uH5pW7MXHaoXlDH8uvgCY4\u002BKwfmC/q4A9jHH6NBXdxZEZ2Y/EPDRVcVZBABQIkki4TWDYiqrYbVcVUNNnrcrFj0qEJRjDVzm8uXLpbt37yKfzzvTm8TjcRw7dgytra3W\u002Bvq6eerUKcvZUwuHs9c\u002BdRYBINXVNNAdlIfWDatlLleBUaU4Em1AX4dkdPuF8ZPdwp2ZBxPG7du38fz5c2ccgiCAEIJEIoFkMolQKPQYwHgqlXrs7K2Fw9lra84iAAiE83oE4mUMvGUzeAQOLU0eRFUPO/O6bH5wpNGYeTDJ3IR4ngfP80gkEhgYGEAwGPyZUvr54ODgT87eWjicvb7tqYm3ir1Rv9RfMal/oWDAogy9YRl97TKOH5LxVreMpYUnmJ2dRbFYrMtSSpHL5ZDL5dDe3o5YLAZVVadVVb0RDodv2bY9PTg4\u002BFtd6BUczv3Y7ywCwCfvxz6M\u002BsVzT1b0\u002BK3ZEoqahZO9zTjRo\u002BBQyItDIQ\u002BMyguUSiVUq9W6rGmamJiYwL1790AIgc/nQyQSKff19a3GYrH7jLEvU6nUN3WhV3DOwgZf//J0GMDoQsHov7/wArpJcbxHwWB3I/wygd9HwKgN27bBGKvL6rqOsbEx3Lx5E4ZhgBCCcDiMnp4ehMPhp6IofhsOh38AMF8qlX6v3eiux35pTcdyqQrCcTgSacA7h1UkOmS0KQJ8XsC2LVBKt8hsB6UUa2trmJubw8OHDwPFYvE0Y2wEwJt\u002Bv7/u78NVCJSC2RaaJQ69YQlHO33oDHihiBy8hIHaNiilztQWGGNgjEHTNDx79gzZbLaxUCgk8vn86Xw\u002BH19ZWRFq\u002B12F4iHgtSDQHeAQVXmEGniIPINlvZyZvUAphaZpmJ\u002BfRyaTQSaTweTkZF2Pq1CHpKPDZ6DdZ6GtkYPfR\u002BDdpRDHcRAEAZIkbQ5RFCGKIiilWF5exvT0NKamprYI8XWfakgmk8mlpaWhSqXSKkkSZFne9Z7ZQFEUdHZ2oqura3O0tLTAtm0Ui0WDUjpOKR2fmZkxNjKuQm1tbclsNjtEKW0NBoNQVXXXMoQQKIqCaDRaJ9PV1QVVVZHP57G4uGgAGGeM1Qm5LpmmadA0Dbquw7Zt5\u002BMdcS5Z7dLxPA/G2LZL7ypk2/bmftntzOwHfym0cWT/TVyF/isOhHbiQGgnDoR24kBoJw6EduL/I8TzL1\u002BVKKUwTRO6ru/LMAwDtm2D4zgQsvXnXa9B58\u002BfHwYwGggE\u002BiORCAKBgLNlT2iahsXFRSwvL5cApEVRTF\u002B6dGnzpukqdOHChWEAo5TSfsuy9vSSth2EEAiCAJ7nSwDSjLHdCY2MjJxgjL1nmmaHrutbbqd7hed5yLIMURR1SukNn893PZ1OVzaeuwpdvHjRz3Fc0DRNsVwu75uQx\u002BOB1\u002BuFoii2ZVn51dXV1StXruzP9P8T/AmvY2O\u002BvRTZMgAAAABJRU5ErkJggg==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH\u002BSURBVDhP3ZLPa9NgHIefpkmbtM22xqVZ19Egc5uTHhxY1F48zYt38aT/xa69efLkwYHgwatD8OgPNupl7D6msIHWlrZKQ1tpsUmTJh40weH04NEHXnjh8/08vC/vG\u002BMnD14cbySSwqOUJMipZHxLzA7f3i6VXCAIZ84ixr2XFwHuXDHWC3OJanswWV1bSB5cnvfuv3q23RoMBgFAPp\u002BnXC7bpml\u002BqVQq41Ag4gdbAK/f9bTF2WR\u002B6qMoYnDtquE/LCwt2aqqMp1O8X2f0Wj0YTgcPmk0GrVisTj\u002BIRDijwE2iunVC7nU8nji566vZJTzhcT6uc1NXNel3\u002B\u002Bzt7fHycnJCiAD7O/v1yqVyljk6c0DgLtvjh3iwmhGkVhbSDIjB6hyAQBFUQDodDoZ4IYgCLamae\u002BBuhDeZdZtY8pfuZSLMSdD4PthhCRJ5HI5dF3H87zM4eHhcq1WU4BYPBxaNLS88214y9C1pUwmHZVDgWmalEoldF2nXq9/7nQ6z4\u002BOjqzoBO12G8uymEwmp8oAoiiiaRqGYZDNZpEkKcoigeu6BMFfn/xMIsG/8j8JJEnCdV263S6tVuuPy7IsPM\u002BLBGK4SafTdr/f/7S7uzsXj0ff4zd838dxnI\u002BapjlAEAuDarWaaDab87Zty7Ztn279gizLqKrq9Hq97s7OzuQ73VDKWcoflKwAAAAASUVORK5CYII=",
               "WhenOpened": "2025-03-19T16:45:15.556Z"
             }
           ]

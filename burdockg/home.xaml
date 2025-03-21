@@ -13,242 +13,47 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
-            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-
+        
         <!-- Header with Logo and Title -->
-        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="20,10,0,0" HorizontalAlignment="Left">
+        <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
             <Image Source="images/logo.png" Width="60" Height="60"/>
-            <TextBlock Text="Лопушок"  FontSize="28" FontFamily="Gabriola" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+            <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
-
-        <!-- Search, Sort and Filter Panel -->
-        <Grid Grid.Row="1" Margin="20,0,20,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="250"/>
-                
-                <ColumnDefinition Width="250"/>
-            </Grid.ColumnDefinitions>
-
-            <Border Grid.Column="0" CornerRadius="5" BorderThickness="1" BorderBrush="Gray">
-                <TextBox Text="Поле для поиска"  FontFamily="Gabriola" FontSize="24" Padding="10,0,0,0" VerticalContentAlignment="Center" BorderThickness="0" Background="Transparent"/>
-            </Border>
-
-            <Border Grid.Column="1" CornerRadius="5" BorderThickness="1" BorderBrush="Gray" Margin="10,0,0,0">
-                <Grid>
-                    <TextBlock Text="Сортировка"  FontSize="24" FontFamily="Gabriola" Padding="10,0,0,0" VerticalAlignment="Center"/>
-                    <ComboBox BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" Width="30" Margin="0,0,5,0">
-                        <ComboBoxItem Content="▼"/>
-                    </ComboBox>
-                </Grid>
-            </Border>
-
-            <Border Grid.Column="2" CornerRadius="5" BorderThickness="1" BorderBrush="Gray" Margin="10,0,0,0">
-                <Grid>
-                    <TextBlock Text="Фильтрация" FontSize="24" FontFamily="Gabriola" Padding="10,0,0,0" VerticalAlignment="Center"/>
-                    <ComboBox BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" Width="30" Margin="0,0,5,0">
-                        <ComboBoxItem Content="▼"/>
-                    </ComboBox>
-                </Grid>
-            </Border>
-        </Grid>
-
-        <!-- Product List -->
-        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="20,10,20,10">
-            <StackPanel>
-                <!-- Product Item Template (repeated for each product) -->
-                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
-                    <Grid Height="120">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="150"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Product Image -->
-                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
-                            <Image Source="/images/image.png" Stretch="Uniform"/>
-                        </Border>
-
-                        <!-- Product Details -->
-                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Тип продукта | " Foreground="#FF9900" FontSize="16" FontFamily="Gabriola" />
-                                <TextBlock Text="Наименование продукта" Foreground="#0066CC" FontSize="16" FontFamily="Gabriola"/>
-                            </StackPanel>
-                            <TextBlock Text="Артикул" Margin="0,5,0,5"  FontFamily="Gabriola" FontSize="16"/>
-                            <TextBlock>
-                                <Run Text="Материалы: "  FontFamily="Gabriola" FontSize="16" />
-                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC" FontFamily="Gabriola" FontSize="16"/>
-                            </TextBlock>
-                        </StackPanel>
-
-                        <!-- Price and Actions -->
-                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
-                            <TextBlock Text="Стоимость" FontFamily="Gabriola" HorizontalAlignment="Right" FontWeight="Bold" FontSize="16"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
-                                </Button>
-                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
-                                </Button>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!-- Repeat product items (3 more times for example) -->
-                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
-                    <Grid Height="120">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="150"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Product Image -->
-                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
-                            <Image Source="/images/image.png" Stretch="Uniform"/>
-                        </Border>
-
-                        <!-- Product Details -->
-                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Тип продукта | " Foreground="#FF9900" FontSize="16" FontFamily="Gabriola" />
-                                <TextBlock Text="Наименование продукта" Foreground="#0066CC" FontSize="16" FontFamily="Gabriola"/>
-                            </StackPanel>
-                            <TextBlock Text="Артикул" Margin="0,5,0,5"  FontFamily="Gabriola" FontSize="16"/>
-                            <TextBlock>
-                                <Run Text="Материалы: "  FontFamily="Gabriola" FontSize="16" />
-                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC" FontFamily="Gabriola" FontSize="16"/>
-                            </TextBlock>
-                        </StackPanel>
-
-                        <!-- Price and Actions -->
-                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
-                            <TextBlock Text="Стоимость" FontFamily="Gabriola" HorizontalAlignment="Right" FontWeight="Bold" FontSize="16"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
-                                </Button>
-                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
-                                </Button>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
-                    <Grid Height="120">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="150"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Product Image -->
-                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
-                            <Image Source="/images/image.png" Stretch="Uniform"/>
-                        </Border>
-
-                        <!-- Product Details -->
-                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Тип продукта | " Foreground="#FF9900" FontSize="16" FontFamily="Gabriola" />
-                                <TextBlock Text="Наименование продукта" Foreground="#0066CC" FontSize="16" FontFamily="Gabriola"/>
-                            </StackPanel>
-                            <TextBlock Text="Артикул" Margin="0,5,0,5"  FontFamily="Gabriola" FontSize="16"/>
-                            <TextBlock>
-                                <Run Text="Материалы: "  FontFamily="Gabriola" FontSize="16" />
-                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC" FontFamily="Gabriola" FontSize="16"/>
-                            </TextBlock>
-                        </StackPanel>
-
-                        <!-- Price and Actions -->
-                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
-                            <TextBlock Text="Стоимость" FontFamily="Gabriola" HorizontalAlignment="Right" FontWeight="Bold" FontSize="16"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
-                                </Button>
-                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
-                                </Button>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="0,0,0,10">
-                    <Grid Height="120">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="150"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Product Image -->
-                        <Border Grid.Column="0" Margin="10" BorderThickness="1" BorderBrush="LightGray">
-                            <Image Source="/images/image.png" Stretch="Uniform"/>
-                        </Border>
-
-                        <!-- Product Details -->
-                        <StackPanel Grid.Column="1" Margin="0,10,0,10" VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Тип продукта | " Foreground="#FF9900" FontSize="16" FontFamily="Gabriola" />
-                                <TextBlock Text="Наименование продукта" Foreground="#0066CC" FontSize="16" FontFamily="Gabriola"/>
-                            </StackPanel>
-                            <TextBlock Text="Артикул" Margin="0,5,0,5"  FontFamily="Gabriola" FontSize="16"/>
-                            <TextBlock>
-                                <Run Text="Материалы: "  FontFamily="Gabriola" FontSize="16" />
-                                <Run Text="Материал1,Материал2...МатериалN" Foreground="#0066CC" FontFamily="Gabriola" FontSize="16"/>
-                            </TextBlock>
-                        </StackPanel>
-
-                        <!-- Price and Actions -->
-                        <StackPanel Grid.Column="2" Margin="0,10,10,10">
-                            <TextBlock Text="Стоимость" FontFamily="Gabriola" HorizontalAlignment="Right" FontWeight="Bold" FontSize="16"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-                                <Button Width="40" Height="40" Margin="0,0,10,0" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/edit.png" Width="20" Height="20"/>
-                                </Button>
-                                <Button Width="40" Height="40" Background="Transparent" BorderThickness="0">
-                                    <Image Source="/images/delete.png" Width="20" Height="20"/>
-                                </Button>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+        
+        <!-- Main Content - Product List -->
+        <ScrollViewer Grid.Row="1" Margin="20,10,20,10" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="productsStackPanel">
+                <!-- Products will be added here dynamically -->
             </StackPanel>
         </ScrollViewer>
-
-        <!-- Footer with Navigation and Add Button -->
-        <Grid Grid.Row="3" Margin="20,0,20,10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button Content="Назад" Width="80" Height="35" Background="#00FF7F" BorderThickness="0" Click="BackButton_Click" FontSize="16" FontFamily="Gabriola">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-            </StackPanel>
-
-            <Button HorizontalAlignment="Center" Width="50" Height="50" Background="#00FF7F" BorderThickness="0" Content="+" FontSize="24" FontWeight="Bold" Click="AddButton_Click" FontFamily="Gabriola"  >
+        
+        <!-- Footer with Buttons -->
+        <Grid Grid.Row="2" Margin="20,10,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Content="Назад" Grid.Column="0" Height="40" Width="150" 
+                    HorizontalAlignment="Left" Click="BackButton_Click" Background="#00FF7F" BorderThickness="0" FontSize="16" FontFamily="Gabriola">
                 <Button.Resources>
                     <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25"/>
+                        <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </Button.Resources>
             </Button>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Text="&lt;1 2 3 4&gt;" VerticalAlignment="Center" FontFamily="Gabriola" FontSize="16" />
-            </StackPanel>
+            
+            <Button Content="Добавить продукт" Grid.Column="1" Height="40" Width="150" 
+                    HorizontalAlignment="Right" Click="AddButton_Click" Background="#00FF7F" BorderThickness="0" FontSize="16" FontFamily="Gabriola">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
     </Grid>
 </Window>

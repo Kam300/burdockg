@@ -3,7 +3,7 @@ using System;
 
 public class DatabaseHelper
 {
-    private string _connectionString = "Host=localhost;Port=5432;Database=burdock;Username=postgres;Password=12345;";
+    private string _connectionString = "Host=localhost;Port=5432;Database=лопух;Username=postgres;Password=00000000;";
 
     // Регистрация пользователя
     public bool RegisterUser(string lastName, string firstName, string middleName, string login, string password, string role)
