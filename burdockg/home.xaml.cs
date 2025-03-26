@@ -12,14 +12,29 @@ namespace burdockg
     {
         private string _connectionString = "Host=localhost;Port=5432;Database=лопух;Username=postgres;Password=00000000;";
         private List<Product> _products = new List<Product>();
+        private string _searchText = "";
+        private string _selectedProductType = "Все типы";
+        private string _sortOption = "Наименование (А-Я)";
 
         public home()
         {
             InitializeComponent();
+            
+            // Initialize sort options
+            sortComboBox.Items.Add("Наименование (А-Я)");
+            sortComboBox.Items.Add("Наименование (Я-А)");
+            sortComboBox.Items.Add("Стоимость (возр.)");
+            sortComboBox.Items.Add("Стоимость (убыв.)");
+            sortComboBox.SelectedIndex = 0;
+            
+            // Load product types for filtering
+            LoadProductTypes();
+            
+            // Load products
             LoadProducts();
         }
 
-        private void LoadProducts()
+        private void LoadProducts(bool resetPage = true)
         {
             try
             {
@@ -29,13 +44,60 @@ namespace burdockg
                 using (var conn = new NpgsqlConnection(_connectionString))
                 {
                     conn.Open();
-                    using (var cmd = new NpgsqlCommand(@"
+                    
+                    // Build the query with filtering and sorting
+                    string query = @"
                         SELECT p.""ID"", p.""Title"", p.""ArticleNumber"", p.""MinCostForAgent"", p.""Image"", 
                                pt.""Title"" as ProductType
                         FROM ""Product"" p
                         JOIN ""ProductType"" pt ON p.""ProductTypeID"" = pt.""ID""
-                        ORDER BY p.""Title""", conn))
+                        WHERE 1=1";
+                    
+                    // Add search filter
+                    if (!string.IsNullOrWhiteSpace(_searchText))
                     {
+                        query += @" AND (p.""Title"" ILIKE @searchText OR p.""ArticleNumber"" ILIKE @searchText)";
+                    }
+                    
+                    // Add product type filter
+                    if (_selectedProductType != "Все типы")
+                    {
+                        query += @" AND pt.""Title"" = @productType";
+                    }
+                    
+                    // Add sorting
+                    switch (_sortOption)
+                    {
+                        case "Наименование (А-Я)":
+                            query += @" ORDER BY p.""Title"" ASC";
+                            break;
+                        case "Наименование (Я-А)":
+                            query += @" ORDER BY p.""Title"" DESC";
+                            break;
+                        case "Стоимость (возр.)":
+                            query += @" ORDER BY p.""MinCostForAgent"" ASC";
+                            break;
+                        case "Стоимость (убыв.)":
+                            query += @" ORDER BY p.""MinCostForAgent"" DESC";
+                            break;
+                        default:
+                            query += @" ORDER BY p.""Title"" ASC";
+                            break;
+                    }
+                    
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    {
+                        // Add parameters
+                        if (!string.IsNullOrWhiteSpace(_searchText))
+                        {
+                            cmd.Parameters.AddWithValue("@searchText", $"%{_searchText}%");
+                        }
+                        
+                        if (_selectedProductType != "Все типы")
+                        {
+                            cmd.Parameters.AddWithValue("@productType", _selectedProductType);
+                        }
+                        
                         using (var reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -75,11 +137,52 @@ namespace burdockg
                             }
                         }
                     }
+                    
+                    // Update product count
+                    productCountTextBlock.Text = $"Показано {_products.Count} из {GetTotalProductCount(conn)} продуктов";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при загрузке продуктов: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private int GetTotalProductCount(NpgsqlConnection conn)
+        {
+            using (var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM \"Product\"", conn))
+            {
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        private void LoadProductTypes()
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand("SELECT \"Title\" FROM \"ProductType\" ORDER BY \"Title\"", conn))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            productTypeComboBox.Items.Clear();
+                            productTypeComboBox.Items.Add("Все типы");
+                            
+                            while (reader.Read())
+                            {
+                                productTypeComboBox.Items.Add(reader["Title"].ToString());
+                            }
+                            
+                            productTypeComboBox.SelectedIndex = 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке типов продуктов: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -265,29 +368,18 @@ namespace burdockg
                 {
                     try
                     {
-                        using (var conn = new NpgsqlConnection(_connectionString))
+                        bool deleted = DeleteProductUsingFunction(productId);
+                        
+                        if (deleted)
                         {
-                            conn.Open();
-                            
-                            // First delete from ProductMaterial table
-                            using (var cmd = new NpgsqlCommand("DELETE FROM \"ProductMaterial\" WHERE \"ProductID\" = @productId", conn))
-                            {
-                                cmd.Parameters.AddWithValue("@productId", productId);
-                                cmd.ExecuteNonQuery();
-                            }
-                            
-                            // Then delete from Product table
-                            using (var cmd = new NpgsqlCommand("DELETE FROM \"Product\" WHERE \"ID\" = @productId", conn))
-                            {
-                                cmd.Parameters.AddWithValue("@productId", productId);
-                                cmd.ExecuteNonQuery();
-                            }
+                            MessageBox.Show("Продукт успешно удален!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            // Reload products
+                            LoadProducts();
                         }
-                        
-                        MessageBox.Show("Продукт успешно удален!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        
-                        // Reload products
-                        LoadProducts();
+                        else
+                        {
+                            MessageBox.Show("Не удалось удалить продукт.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -296,7 +388,46 @@ namespace burdockg
                 }
             }
         }
-    }
+
+        private bool DeleteProductUsingFunction(int productId)
+        {
+            using (var conn = new NpgsqlConnection(_connectionString))
+            {
+                conn.Open();
+                
+                using (var cmd = new NpgsqlCommand("SELECT delete_product(@productId)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@productId", productId);
+                    return (bool)cmd.ExecuteScalar();
+                }
+            }
+        }
+        
+        // Move these methods inside the home class
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _searchText = searchTextBox.Text;
+            LoadProducts();
+        }
+        
+        private void ProductTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (productTypeComboBox.SelectedItem != null)
+            {
+                _selectedProductType = productTypeComboBox.SelectedItem.ToString();
+                LoadProducts();
+            }
+        }
+        
+        private void SortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sortComboBox.SelectedItem != null)
+            {
+                _sortOption = sortComboBox.SelectedItem.ToString();
+                LoadProducts();
+            }
+        }
+    } // End of home class
 
     // Product class to store data
     public class Product

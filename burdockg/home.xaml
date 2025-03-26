@@ -13,7 +13,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         
@@ -23,15 +25,48 @@
             <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="10,0,0,0"/>
         </StackPanel>
         
+        <!-- Search, Filter and Sort Controls -->
+        <Grid Grid.Row="1" Margin="20,10,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Search Box -->
+            <Border Grid.Column="0" BorderThickness="1" BorderBrush="LightGray" CornerRadius="5">
+                <TextBox x:Name="searchTextBox" Padding="5" BorderThickness="0" 
+                         TextChanged="SearchTextBox_TextChanged"
+                         FontSize="14" FontFamily="Gabriola"
+                         VerticalContentAlignment="Center"
+                         Text="" />
+            </Border>
+            
+            <!-- Product Type Filter -->
+            <ComboBox x:Name="productTypeComboBox" Grid.Column="1" Margin="10,0,0,0" Height="30"
+                      SelectionChanged="ProductTypeComboBox_SelectionChanged"
+                      FontSize="14" FontFamily="Gabriola" />
+            
+            <!-- Sort Options -->
+            <ComboBox x:Name="sortComboBox" Grid.Column="2" Margin="10,0,0,0" Height="30"
+                      SelectionChanged="SortComboBox_SelectionChanged"
+                      FontSize="14" FontFamily="Gabriola" />
+        </Grid>
+        
         <!-- Main Content - Product List -->
-        <ScrollViewer Grid.Row="1" Margin="20,10,20,10" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="2" Margin="20,10,20,10" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="productsStackPanel">
                 <!-- Products will be added here dynamically -->
             </StackPanel>
         </ScrollViewer>
         
+        <!-- Product Count -->
+        <TextBlock x:Name="productCountTextBlock" Grid.Row="3" Margin="20,5,20,5"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"
+                   FontSize="14" FontFamily="Gabriola" />
+        
         <!-- Footer with Buttons -->
-        <Grid Grid.Row="2" Margin="20,10,20,10">
+        <Grid Grid.Row="4" Margin="20,10,20,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
