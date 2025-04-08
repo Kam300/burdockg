@@ -344,9 +344,11 @@ namespace burdockg
             {
                 // Navigate to edit product window
                 EditProduct editProductWindow = new EditProduct(productId);
-                if (editProductWindow.ShowDialog() == true)
+                bool? result = editProductWindow.ShowDialog();
+                
+                if (result == true)
                 {
-                    // Reload products when returning from edit window
+                    // Reload products when returning from edit window with changes
                     LoadProducts();
                 }
             }

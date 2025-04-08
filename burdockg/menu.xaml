@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:burdockg"
         mc:Ignorable="d"
-        Title="Лопушок" Height="400" Width="700"
+        Title="Лопушок-меню" Height="420" Width="700"
         WindowStartupLocation="CenterScreen"
         ResizeMode ="NoResize"
         Icon="/images/logo.ico">

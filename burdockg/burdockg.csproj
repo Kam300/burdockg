@@ -251,5 +251,33 @@
   <ItemGroup>
     <Resource Include="images\edit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="products\paper_0.jpeg" />
+    <Resource Include="products\paper_1.jpeg" />
+    <Resource Include="products\paper_10.jpeg" />
+    <Resource Include="products\paper_11.jpeg" />
+    <Resource Include="products\paper_12.jpeg" />
+    <Resource Include="products\paper_13.jpeg" />
+    <Resource Include="products\paper_14.jpeg" />
+    <Resource Include="products\paper_15.jpeg" />
+    <Resource Include="products\paper_16.jpeg" />
+    <Resource Include="products\paper_17.jpeg" />
+    <Resource Include="products\paper_18.jpeg" />
+    <Resource Include="products\paper_19.jpeg" />
+    <Resource Include="products\paper_2.jpeg" />
+    <Resource Include="products\paper_20.jpeg" />
+    <Resource Include="products\paper_21.jpeg" />
+    <Resource Include="products\paper_22.jpeg" />
+    <Resource Include="products\paper_23.jpeg" />
+    <Resource Include="products\paper_24.jpeg" />
+    <Resource Include="products\paper_25.jpeg" />
+    <Resource Include="products\paper_3.jpeg" />
+    <Resource Include="products\paper_4.jpeg" />
+    <Resource Include="products\paper_5.jpeg" />
+    <Resource Include="products\paper_6.jpeg" />
+    <Resource Include="products\paper_7.jpeg" />
+    <Resource Include="products\paper_8.jpeg" />
+    <Resource Include="products\paper_9.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
