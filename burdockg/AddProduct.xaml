@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:burdockg"
         mc:Ignorable="d"
-        Title="Лопушок" Height="600" Width="950"
+        Title="Лопушок" Height="650" Width="950"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/images/logo.ico">
@@ -20,6 +20,8 @@
         <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
             <Image Source="images/logo.png" Width="60" Height="60"/>
             <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Text="Добавление" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="250,0,0,0" HorizontalAlignment="Center" />
+
         </StackPanel>
         
         <!-- Main Content -->
@@ -32,7 +34,7 @@
             <!-- Left Column - Image and Change Button -->
             <StackPanel Grid.Column="0" Margin="0,0,20,0">
                 <Border Width="250" Height="250" BorderThickness="2" BorderBrush="Black" Margin="0,0,0,20">
-                    <Image x:Name="productImage" Source="/images/logo.png" Stretch="Uniform"/>
+                    <Image x:Name="productImage" Source="/images/image.png" Stretch="Uniform"/>
                 </Border>
 
                 <Button Content="Добавить картинку" Height="40" Width="250" Background="#00FF7F" BorderThickness="0" Click="ChangeImageButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
@@ -77,12 +79,19 @@
                         <TextBlock Text="▼" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     </Grid>
                 </Border>
+                <TextBlock Text="Арктикул" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
+                    <TextBox x:Name="ArkTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
+                </Border>
+                
+                
                 
                 <!-- Cost -->
-                <TextBlock Text="Стоимость" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                <TextBlock Text="Стоимость ₽" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
                 <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
                     <TextBox x:Name="costTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
                 </Border>
+                
             </StackPanel>
         </Grid>
         

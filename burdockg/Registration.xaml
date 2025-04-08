@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:burdockg"
         mc:Ignorable="d"
-        Title="Лопушок" Height="700" Width="500"
+        Title="Лопушок-регистрация" Height="700" Width="500"
         WindowStartupLocation="CenterScreen"
         ResizeMode ="NoResize"
         Icon="/images/logo.ico">
@@ -32,7 +32,7 @@
                Height="120" 
                Margin="20,0,20,0"
                VerticalAlignment="Center"
-               Grid.Column="0" Grid.ColumnSpan="3"  Grid.RowSpan="10"/>
+               Grid.Column="0" Grid.ColumnSpan="3"  Grid.RowSpan="6"/>
 
 
         <Button Content="Назад"

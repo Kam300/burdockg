@@ -123,9 +123,9 @@
         
         </StackPanel>
 
-        <StackPanel Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="8" 
-                    Margin="0,50,20,20">
-            <Image Source="/images/profil.png" Width="100" 
+        <StackPanel Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3" 
+                    Margin="0,100,20,20">
+            <Image Source="/images/profil.png"  Width="100" 
                    Height="100" 
                    MouseDown="ProfileImage_MouseDown"
                    Cursor="Hand"/>

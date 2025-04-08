@@ -54,7 +54,7 @@
                    FontSize="24"
                    HorizontalAlignment="Center"
                    Margin="0,0,0,10" FontFamily="Gabriola" Grid.Column="0" Grid.ColumnSpan="6" />
-        <TextBlock Text="Фамилия" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center"  Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1"/>
+        <TextBlock Text="Логин" FontFamily="Gabriola" LineHeight="6" FontSize="16" VerticalAlignment="Center"  Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1"/>
         <TextBox Height="35" 
                          Width="170"
                          Background="#E0FFFF"

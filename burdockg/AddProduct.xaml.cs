@@ -206,10 +206,40 @@ namespace burdockg
                                 cmd.Parameters.AddWithValue("@articleNumber", articleNumber);
                                 cmd.Parameters.AddWithValue("@description", DBNull.Value);
                                 
-                                if (imageData != null)
+                                // In the SaveButton_Click method, modify the image handling section:
+                                
+                                // When handling the image path
+                                if (_selectedImagePath != null)
+                                {
+                                    // Ensure the path doesn't exceed database column length
+                                    if (_selectedImagePath.Length > 100)
+                                    {
+                                        // Get just the filename instead of the full path
+                                        string fileName = Path.GetFileName(_selectedImagePath);
+                                        
+                                        // If the filename is still too long, truncate it
+                                        if (fileName.Length > 100)
+                                        {
+                                            fileName = fileName.Substring(0, 97) + "...";
+                                        }
+                                        
+                                        // Store just the filename or a relative path
+                                        cmd.Parameters.AddWithValue("@image", "\\products\\" + fileName);
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.AddWithValue("@image", _selectedImagePath);
+                                    }
+                                }
+                                else if (imageData != null)
+                                {
+                                    // If we have binary image data
                                     cmd.Parameters.AddWithValue("@image", imageData);
+                                }
                                 else
+                                {
                                     cmd.Parameters.AddWithValue("@image", DBNull.Value);
+                                }
                                 
                                 cmd.Parameters.AddWithValue("@personCount", 1); 
                                 cmd.Parameters.AddWithValue("@workshopNumber", 1);

@@ -162,51 +162,69 @@ namespace burdockg
                                             productImage.Source = image;
                                         }
                                     }
+                                    // In the LoadProductData method, modify the image handling section:
                                     else if (imageData is string)
                                     {
                                         // Handle image path stored as string
                                         string imagePath = imageData.ToString();
                                         
-                                        try
+                                        // Get just the filename from the path
+                                        string fileName = Path.GetFileName(imagePath);
+                                        
+                                        // Try multiple possible locations for the image file
+                                        string[] possiblePaths = new string[]
                                         {
-                                            // Check if this is a relative path within the project
-                                            if (imagePath.StartsWith("\\products\\") || imagePath.StartsWith("/products/"))
-                                            {
-                                                // Convert to a path relative to the application directory
-                                                string normalizedPath = imagePath.Replace('/', '\\');
-                                                if (normalizedPath.StartsWith("\\"))
-                                                    normalizedPath = normalizedPath.Substring(1);
-                                                    
-                                                imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, normalizedPath);
-                                            }
-                                            // Check if the path is absolute or relative
-                                            else if (!Path.IsPathRooted(imagePath))
-                                            {
-                                                // If relative, make it absolute based on application path
-                                                imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, imagePath);
-                                            }
+                                            // Direct path as stored in DB
+                                            imagePath,
                                             
-                                            // Check if file exists
-                                            if (File.Exists(imagePath))
+                                            // Path relative to application directory
+                                            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "products", fileName),
+                                            
+                                            // Explicit path to your project folder
+                                            Path.Combine(@"E:\burdockg\burdockg\products", fileName),
+                                            
+                                            // Try with different casing
+                                            Path.Combine(@"E:\burdockg\burdockg\Products", fileName),
+                                            
+                                            // Try with different extensions
+                                            Path.Combine(@"E:\burdockg\burdockg\products", Path.GetFileNameWithoutExtension(fileName) + ".jpg"),
+                                            Path.Combine(@"E:\burdockg\burdockg\products", Path.GetFileNameWithoutExtension(fileName) + ".jpeg"),
+                                            Path.Combine(@"E:\burdockg\burdockg\products", Path.GetFileNameWithoutExtension(fileName) + ".png")
+                                        };
+                                        
+                                        // Try each path until we find one that exists
+                                        bool imageFound = false;
+                                        foreach (string path in possiblePaths)
+                                        {
+                                            if (File.Exists(path))
                                             {
-                                                BitmapImage image = new BitmapImage();
-                                                image.BeginInit();
-                                                image.CacheOption = BitmapCacheOption.OnLoad;
-                                                image.UriSource = new Uri(imagePath);
-                                                image.EndInit();
-                                                productImage.Source = image;
-                                                
-                                                // Store the path for later use
-                                                selectedImagePath = imagePath;
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show($"Файл изображения не найден по пути: {imagePath}", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                                try
+                                                {
+                                                    BitmapImage image = new BitmapImage();
+                                                    image.BeginInit();
+                                                    image.CacheOption = BitmapCacheOption.OnLoad;
+                                                    image.UriSource = new Uri(path);
+                                                    image.EndInit();
+                                                    productImage.Source = image;
+                                                    
+                                                    // Store the path for later use
+                                                    selectedImagePath = path;
+                                                    imageFound = true;
+                                                    break;
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Console.WriteLine($"Error loading image from {path}: {ex.Message}");
+                                                    // Continue trying other paths
+                                                }
                                             }
                                         }
-                                        catch (Exception ex)
+                                        
+                                        if (!imageFound)
                                         {
-                                            MessageBox.Show($"Ошибка при загрузке изображения: {ex.Message}", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                            // Log that the image wasn't found
+                                            Console.WriteLine($"Image not found for product {id}: {imagePath}");
+                                            MessageBox.Show($"Файл изображения не найден по пути: {imagePath}", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
                                         }
                                     }
                                     else
@@ -446,6 +464,66 @@ namespace burdockg
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Ошибка при загрузке изображения: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+        // Add this method to handle the delete button click
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Ask for confirmation before deleting
+            MessageBoxResult result = MessageBox.Show(
+                "Вы уверены, что хотите удалить этот продукт?", 
+                "Подтверждение удаления", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning);
+                
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    using (var conn = new NpgsqlConnection(_connectionString))
+                    {
+                        conn.Open();
+                        
+                        using (var transaction = conn.BeginTransaction())
+                        {
+                            try
+                            {
+                                // First delete from ProductMaterial table (foreign key constraint)
+                                using (var cmd = new NpgsqlCommand(
+                                    "DELETE FROM \"ProductMaterial\" WHERE \"ProductID\" = @productId", 
+                                    conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@productId", productId);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                
+                                // Then delete the product
+                                using (var cmd = new NpgsqlCommand(
+                                    "DELETE FROM \"Product\" WHERE \"ID\" = @productId", 
+                                    conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@productId", productId);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                
+                                transaction.Commit();
+                                MessageBox.Show("Продукт успешно удален!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                _dialogResult = true;
+                                this.DialogResult = true;
+                                this.Close();
+                            }
+                            catch (Exception ex)
+                            {
+                                transaction.Rollback();
+                                throw ex;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении продукта: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

@@ -111,22 +111,70 @@ namespace burdockg
                                     ProductType = reader["ProductType"].ToString()
                                 };
 
-                                // Fix the image data handling
+                                // Modify the image handling section in the LoadProducts method
                                 if (!reader.IsDBNull(reader.GetOrdinal("Image")))
                                 {
                                     try
                                     {
-                                        // Try to get as byte array directly
-                                        product.ImageData = (byte[])reader["Image"];
-                                    }
-                                    catch
-                                    {
-                                        // If that fails, try to convert from string path to image
-                                        string imagePath = reader["Image"].ToString();
-                                        if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                                        object imageData = reader["Image"];
+                                        if (imageData is byte[])
                                         {
-                                            product.ImageData = File.ReadAllBytes(imagePath);
+                                            // Handle byte array images
+                                            product.ImageData = (byte[])imageData;
                                         }
+                                        else if (imageData is string)
+                                        {
+                                            // Handle image path stored as string
+                                            string imagePath = imageData.ToString();
+                                            
+                                            // Get just the filename from the path
+                                            string fileName = Path.GetFileName(imagePath);
+                                            
+                                            // Try multiple possible locations for the image file
+                                            string[] possiblePaths = new string[]
+                                            {
+                                                // Direct path as stored in DB
+                                                imagePath,
+                                                
+                                                // Path relative to application directory
+                                                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "products", fileName),
+                                                
+                                                // Explicit path to your project folder
+                                                Path.Combine(@"E:\burdockg\burdockg\products", fileName),
+                                                
+                                                // Try with different casing
+                                                Path.Combine(@"E:\burdockg\burdockg\Products", fileName),
+                                                
+                                                // Try with different extensions
+                                                Path.Combine(@"E:\burdockg\burdockg\products", Path.GetFileNameWithoutExtension(fileName) + ".jpg"),
+                                                Path.Combine(@"E:\burdockg\burdockg\products", Path.GetFileNameWithoutExtension(fileName) + ".jpeg"),
+                                                Path.Combine(@"E:\burdockg\burdockg\products", Path.GetFileNameWithoutExtension(fileName) + ".png")
+                                            };
+                                            
+                                            // Try each path until we find one that exists
+                                            bool imageFound = false;
+                                            foreach (string path in possiblePaths)
+                                            {
+                                                if (File.Exists(path))
+                                                {
+                                                    product.ImageData = File.ReadAllBytes(path);
+                                                    imageFound = true;
+                                                    break;
+                                                }
+                                            }
+                                            
+                                            if (!imageFound)
+                                            {
+                                                // Log that the image wasn't found
+                                                Console.WriteLine($"Image not found for product {product.Id}: {imagePath}");
+                                                MessageBox.Show($"Файл изображения не найден по пути: {imagePath}", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        // Log the error but continue loading other products
+                                        Console.WriteLine($"Error loading image for product {product.Id}: {ex.Message}");
                                     }
                                 }
 
@@ -186,6 +234,7 @@ namespace burdockg
             }
         }
 
+        // Modify the CreateProductElement method to add click handling for editing
         private UIElement CreateProductElement(Product product)
         {
             // Create border container
@@ -196,13 +245,13 @@ namespace burdockg
                 CornerRadius = new CornerRadius(5),
                 Margin = new Thickness(0, 0, 0, 10)
             };
-
+        
             // Create main grid
             Grid grid = new Grid { Height = 120 };
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(150) });
-
+        
             // Product Image
             Border imageBorder = new Border
             {
@@ -210,7 +259,7 @@ namespace burdockg
                 BorderThickness = new Thickness(1),
                 BorderBrush = System.Windows.Media.Brushes.LightGray
             };
-
+        
             Image image = new Image { Stretch = System.Windows.Media.Stretch.Uniform };
             
             // Set image source
@@ -228,20 +277,20 @@ namespace burdockg
             }
             else
             {
-                image.Source = new BitmapImage(new Uri("/images/logo.png", UriKind.Relative));
+                image.Source = new BitmapImage(new Uri("/images/image.png", UriKind.Relative));
             }
-
+        
             imageBorder.Child = image;
             Grid.SetColumn(imageBorder, 0);
             grid.Children.Add(imageBorder);
-
+        
             // Product Details
             StackPanel detailsPanel = new StackPanel
             {
                 Margin = new Thickness(10, 10, 0, 10),
                 VerticalAlignment = VerticalAlignment.Center
             };
-
+        
             // Product Type and Name
             TextBlock typeText = new TextBlock
             {
@@ -250,7 +299,7 @@ namespace burdockg
                 FontFamily = new System.Windows.Media.FontFamily("Gabriola")
             };
             detailsPanel.Children.Add(typeText);
-
+        
             // Article Number
             TextBlock articleText = new TextBlock
             {
@@ -260,16 +309,16 @@ namespace burdockg
                 FontFamily = new System.Windows.Media.FontFamily("Gabriola")
             };
             detailsPanel.Children.Add(articleText);
-
+        
             Grid.SetColumn(detailsPanel, 1);
             grid.Children.Add(detailsPanel);
-
+        
             // Price and Actions
             StackPanel priceActionsPanel = new StackPanel
             {
                 Margin = new Thickness(0, 10, 10, 10)
             };
-
+        
             TextBlock priceText = new TextBlock
             {
                 Text = $"{product.MinCostForAgent:C}",
@@ -279,7 +328,7 @@ namespace burdockg
                 FontFamily = new System.Windows.Media.FontFamily("Gabriola")
             };
             priceActionsPanel.Children.Add(priceText);
-
+        
             // Edit and Delete buttons
             StackPanel buttonsPanel = new StackPanel
             {
@@ -287,7 +336,7 @@ namespace burdockg
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Margin = new Thickness(0, 20, 0, 0)
             };
-
+        
             Button editButton = new Button
             {
                 Content = "Изменить",
@@ -297,7 +346,7 @@ namespace burdockg
                 Tag = product.Id
             };
             editButton.Click += EditButton_Click;
-
+        
             Button deleteButton = new Button
             {
                 Content = "Удалить",
@@ -306,14 +355,14 @@ namespace burdockg
                 Tag = product.Id
             };
             deleteButton.Click += DeleteButton_Click;
-
+        
             buttonsPanel.Children.Add(editButton);
             buttonsPanel.Children.Add(deleteButton);
             priceActionsPanel.Children.Add(buttonsPanel);
-
+        
             Grid.SetColumn(priceActionsPanel, 2);
             grid.Children.Add(priceActionsPanel);
-
+        
             border.Child = grid;
             return border;
         }

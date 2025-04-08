@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:burdockg"
         mc:Ignorable="d"
-        Title="Лопушок-редактирование" Height="600" Width="950"
+        Title="Лопушок-редактирование" Height="650" Width="950"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/images/logo.ico">
@@ -20,6 +20,7 @@
         <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
             <Image Source="images/logo.png" Width="60" Height="60"/>
             <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Text="Редактирование" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="250,0,0,0" HorizontalAlignment="Center" />
         </StackPanel>
 
         <!-- Main Content -->
@@ -32,7 +33,7 @@
             <!-- Left Column - Image and Change Button -->
             <StackPanel Grid.Column="0" Margin="0,0,20,0">
                 <Border Width="250" Height="250" BorderThickness="2" BorderBrush="Black" Margin="0,0,0,20">
-                    <Image x:Name="productImage" Source="/images/logo.png" Stretch="Uniform"/>
+                    <Image x:Name="productImage" Source="/images/image.png" Stretch="Uniform"/>
                 </Border>
 
                 <Button Content="Изменить картинку" Height="40" Width="250" Background="#00FF7F" BorderThickness="0" Click="ChangeImageButton_Click">
@@ -77,26 +78,48 @@
                         <TextBlock Text="▼" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     </Grid>
                 </Border>
-
+                
+                <TextBlock Text="Арктикул" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
+                    <TextBox x:Name="ArkTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
+                </Border>
+                
                 <!-- Cost -->
-                <TextBlock Text="Стоимость" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                <TextBlock Text="Стоимость ₽" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
                 <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
                     <TextBox x:Name="costTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
                 </Border>
             </StackPanel>
         </Grid>
 
-        <!-- Footer with Buttons -->
-        <Grid Grid.Row="2" Margin="40,0,40,20">
-            <Button Content="Назад" Width="100" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Left" Click="BackButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
+        <!-- Footer with Buttons - modify the existing buttons grid -->
+        <Grid Grid.Row="2" Margin="20,10,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Content="Назад" Grid.Column="0" Height="40" Width="150" 
+                    HorizontalAlignment="Left" Click="BackButton_Click" Background="#00FF7F" BorderThickness="0" FontSize="16" FontFamily="Gabriola">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </Button.Resources>
             </Button>
-
-            <Button Content="Сохранить изменения" Width="200" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Right" Click="SaveButton_Click" FontSize="16"  FontFamily="Gabriola">
+            
+            <Button Content="Удалить" Grid.Column="1" Height="40" Width="150" 
+                    HorizontalAlignment="Center" Click="DeleteButton_Click" Background="#FF6347" BorderThickness="0" FontSize="16" FontFamily="Gabriola">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            
+            <Button Content="Сохранить" Grid.Column="2" Height="40" Width="150" 
+                    HorizontalAlignment="Right" Click="SaveButton_Click" Background="#00FF7F" BorderThickness="0" FontSize="16" FontFamily="Gabriola">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
