@@ -23,6 +23,8 @@
         <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
             <Image Source="images/logo.png" Width="60" Height="60"/>
             <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Text="Список" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="250,0,0,0" HorizontalAlignment="Center" />
+
         </StackPanel>
         
         <!-- Search, Filter and Sort Controls -->

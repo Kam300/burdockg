@@ -9,109 +9,143 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/images/logo.ico">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
-        </Grid.RowDefinitions>
-        
-        <!-- Header with Logo and Title -->
-        <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
-            <Image Source="images/logo.png" Width="60" Height="60"/>
-            <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="10,0,0,0"/>
-            <TextBlock Text="Добавление" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="250,0,0,0" HorizontalAlignment="Center" />
-
-        </StackPanel>
-        
-        <!-- Main Content -->
-        <Grid Grid.Row="1" Margin="40,20,40,20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <!-- Wrap the main Grid in a ScrollViewer -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
             
-            <!-- Left Column - Image and Change Button -->
-            <StackPanel Grid.Column="0" Margin="0,0,20,0">
-                <Border Width="250" Height="250" BorderThickness="2" BorderBrush="Black" Margin="0,0,0,20">
-                    <Image x:Name="productImage" Source="/images/image.png" Stretch="Uniform"/>
-                </Border>
-
-                <Button Content="Добавить картинку" Height="40" Width="250" Background="#00FF7F" BorderThickness="0" Click="ChangeImageButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
+            <!-- Header with Logo and Title -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                <Image Source="images/logo.png" Width="60" Height="60"/>
+                <TextBlock Text="Лопушок" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock Text="Добавление" FontSize="28" FontFamily="Gabriola" VerticalAlignment="Center" Margin="250,0,0,0" HorizontalAlignment="Center" />
+    
+            </StackPanel>
+            
+            <!-- Main Content -->
+            <Grid Grid.Row="1" Margin="40,20,40,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Left Column - Image and Change Button -->
+                <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                    <Border Width="250" Height="250" BorderThickness="2" BorderBrush="Black" Margin="0,0,0,20">
+                        <Image x:Name="productImage" Source="/images/image.png" Stretch="Uniform"/>
+                    </Border>
+    
+                    <Button Content="Добавить картинку" Height="40" Width="250" Background="#00FF7F" BorderThickness="0" Click="ChangeImageButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                
+                <!-- Right Column - Form Fields -->
+                <StackPanel Grid.Column="1">
+                    <!-- Product Name -->
+                    <TextBlock Text="Наименование продукта" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
+                        <TextBox x:Name="productNameTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
+                    </Border>
+                    
+                    <!-- Product Type -->
+                    <TextBlock Text="Тип продукта" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
+                        <Grid>
+                            <ComboBox x:Name="productTypeComboBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center">
+                                <ComboBoxItem Content="Тип 1"/>
+                                <ComboBoxItem Content="Тип 2"/>
+                                <ComboBoxItem Content="Тип 3"/>
+                            </ComboBox>
+                            <TextBlock Text="▼" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        </Grid>
+                    </Border>
+                    
+                    <!-- Materials -->
+                    <!-- Replace the existing materials ComboBox with this ListBox setup -->
+                    <TextBlock Text="Материалы" Margin="0,0,0,-5" FontSize="16" FontFamily="Gabriola"/>
+                    <Grid Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Grid.Column="0">
+                            <ListBox x:Name="materialsListBox" Height="100" Background="#E0FFFF" BorderThickness="0" 
+                                     SelectionMode="Multiple"/>
+                        </Border>
+                        
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <Button Content="Добавить" Height="30" Width="100" Background="#00FF7F" BorderThickness="0" 
+                                    Click="AddMaterial_Click" Margin="0,0,0,5">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button Content="Удалить" Height="30" Width="100" Background="#FF6347" BorderThickness="0" 
+                                    Click="RemoveMaterial_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <!-- Add a ComboBox for selecting materials to add -->
+                    <TextBlock Text="Выбрать материал" Margin="0,0,0,-5" FontSize="16" FontFamily="Gabriola"/>
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
+                        <Grid>
+                            <ComboBox x:Name="materialsComboBox" Height="40" Background="#E0FFFF" BorderThickness="0" 
+                                      Padding="10,0,0,0" VerticalContentAlignment="Center"/>
+                            <TextBlock Text="▼" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        </Grid>
+                    </Border>
+                    <TextBlock Text="Арктикул" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
+                        <TextBox x:Name="ArkTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
+                    </Border>
+                    
+                    
+                    
+                    <!-- Cost -->
+                    <TextBlock Text="Стоимость ₽" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
+                        <TextBox x:Name="costTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
+                    </Border>
+                    
+                </StackPanel>
+            </Grid>
+            
+            <!-- Footer with Buttons -->
+            <Grid Grid.Row="2" Margin="40,0,40,20">
+                <Button Content="Назад" Width="100" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Left" Click="BackButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-            </StackPanel>
-            
-            <!-- Right Column - Form Fields -->
-            <StackPanel Grid.Column="1">
-                <!-- Product Name -->
-                <TextBlock Text="Наименование продукта" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
-                <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
-                    <TextBox x:Name="productNameTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
-                </Border>
-                
-                <!-- Product Type -->
-                <TextBlock Text="Тип продукта" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
-                <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
-                    <Grid>
-                        <ComboBox x:Name="productTypeComboBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center">
-                            <ComboBoxItem Content="Тип 1"/>
-                            <ComboBoxItem Content="Тип 2"/>
-                            <ComboBoxItem Content="Тип 3"/>
-                        </ComboBox>
-                        <TextBlock Text="▼" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                    </Grid>
-                </Border>
-                
-                <!-- Materials -->
-                <TextBlock Text="Материалы: Материал1,Материал2...МатериалN" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
-                <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
-                    <Grid>
-                        <ComboBox x:Name="materialsComboBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center">
-                            <ComboBoxItem Content="Материал 1"/>
-                            <ComboBoxItem Content="Материал 2"/>
-                            <ComboBoxItem Content="Материал 3"/>
-                        </ComboBox>
-                        <TextBlock Text="▼" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                    </Grid>
-                </Border>
-                <TextBlock Text="Арктикул" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
-                <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
-                    <TextBox x:Name="ArkTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
-                </Border>
-                
-                
-                
-                <!-- Cost -->
-                <TextBlock Text="Стоимость ₽" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola"/>
-                <Border CornerRadius="5" BorderThickness="1" BorderBrush="LightGray" Margin="0,0,0,20">
-                    <TextBox x:Name="costTextBox" Height="40" Background="#E0FFFF" BorderThickness="0" Padding="10,0,0,0" VerticalContentAlignment="Center"/>
-                </Border>
-                
-            </StackPanel>
+    
+                <Button Content="Сохранить" Width="200" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Right" Click="SaveButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
         </Grid>
-        
-        <!-- Footer with Buttons -->
-        <Grid Grid.Row="2" Margin="40,0,40,20">
-            <Button Content="Назад" Width="100" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Left" Click="BackButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-            <Button Content="Сохранить" Width="200" Height="40" Background="#00FF7F" BorderThickness="0" HorizontalAlignment="Right" Click="SaveButton_Click" Margin="0,0,0,-5" FontSize="16"  FontFamily="Gabriola">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Grid>
-    </Grid>
+    </ScrollViewer>
 </Window>

@@ -49,6 +49,74 @@ namespace burdockg
             }
         }
 
+        // Add this class to store material information
+        private class MaterialItem
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
+            
+            public override string ToString()
+            {
+                return Title;
+            }
+        }
+        
+        // Add these methods to handle material selection
+        // The issue is that your AddMaterial_Click and RemoveMaterial_Click methods exist,
+        // but they might not be connected to your buttons in the XAML file.
+        
+        // Make sure your XAML file has these buttons with the Click events properly set:
+        // <Button Content="Добавить" Click="AddMaterial_Click" ... />
+        // <Button Content="Удалить" Click="RemoveMaterial_Click" ... />
+        
+        // Also, you need to make sure you have both a materialsComboBox and a materialsListBox in your XAML.
+        
+        // If the buttons are already connected in XAML but not working, let's modify the AddMaterial_Click method:
+        private void AddMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            if (materialsComboBox.SelectedItem != null)
+            {
+                MaterialItem selectedMaterial = (MaterialItem)materialsComboBox.SelectedItem;
+                
+                // Check if the material is already in the list
+                bool alreadyExists = false;
+                foreach (object item in materialsListBox.Items)
+                {
+                    if (item is MaterialItem materialItem && materialItem.Id == selectedMaterial.Id)
+                    {
+                        alreadyExists = true;
+                        break;
+                    }
+                }
+                
+                if (!alreadyExists)
+                {
+                    materialsListBox.Items.Add(selectedMaterial);
+                }
+                else
+                {
+                    MessageBox.Show("Этот материал уже добавлен в список", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите материал для добавления", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void RemoveMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            if (materialsListBox.SelectedItem != null)
+            {
+                materialsListBox.Items.Remove(materialsListBox.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Выберите материал для удаления", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        // Modify the LoadMaterials method to use MaterialItem
         private void LoadMaterials()
         {
             try
@@ -56,15 +124,19 @@ namespace burdockg
                 using (var conn = new NpgsqlConnection(_connectionString))
                 {
                     conn.Open();
-                    using (var cmd = new NpgsqlCommand("SELECT * FROM \"Material\"", conn))
+                    using (var cmd = new NpgsqlCommand("SELECT \"ID\", \"Title\" FROM \"Material\"", conn))
                     {
                         using (var reader = cmd.ExecuteReader())
                         {
                             materialsComboBox.Items.Clear();
                             while (reader.Read())
                             {
-                                string materialName = reader["Title"].ToString();
-                                materialsComboBox.Items.Add(materialName);
+                                MaterialItem item = new MaterialItem
+                                {
+                                    Id = Convert.ToInt32(reader["ID"]),
+                                    Title = reader["Title"].ToString()
+                                };
+                                materialsComboBox.Items.Add(item);
                             }
                         }
                     }
@@ -158,8 +230,27 @@ namespace burdockg
                                 materialId = Convert.ToInt32(cmd.ExecuteScalar());
                             }
 
+                            // Add validation for article number
+                            if (string.IsNullOrWhiteSpace(ArkTextBox.Text))
+                            {
+                                MessageBox.Show("Пожалуйста, введите артикул продукта", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                return;
+                            }
+
                             // Check if article number already exists
-                            string articleNumber;
+                            string articleNumber = ArkTextBox.Text;
+                            
+                            using (var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM \"Product\" WHERE \"ArticleNumber\" = @articleNumber", conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@articleNumber", articleNumber);
+                                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                                
+                                if (count > 0)
+                                {
+                                    throw new Exception("Продукт с таким артикулом уже существует. Пожалуйста, введите другой артикул.");
+                                }
+                            }
+
                             bool isUnique = false;
                             int attempts = 0;
                             
@@ -249,13 +340,17 @@ namespace burdockg
                             }
 
                             // Insert product material relationship
-                            using (var materialCmd = new NpgsqlCommand(
-                                "INSERT INTO \"ProductMaterial\" (\"ProductID\", \"MaterialID\", \"Count\") VALUES (@productId, @materialId, @count)", conn, transaction))
+                            foreach (MaterialItem material in materialsListBox.Items)
                             {
-                                materialCmd.Parameters.AddWithValue("@productId", newProductId);
-                                materialCmd.Parameters.AddWithValue("@materialId", materialId);
-                                materialCmd.Parameters.AddWithValue("@count", 1);
-                                materialCmd.ExecuteNonQuery();
+                                using (var materialCmd = new NpgsqlCommand(
+                                    "INSERT INTO \"ProductMaterial\" (\"ProductID\", \"MaterialID\", \"Count\") VALUES (@productId, @materialId, @count)", 
+                                    conn, transaction))
+                                {
+                                    materialCmd.Parameters.AddWithValue("@productId", newProductId);
+                                    materialCmd.Parameters.AddWithValue("@materialId", material.Id);
+                                    materialCmd.Parameters.AddWithValue("@count", 1);
+                                    materialCmd.ExecuteNonQuery();
+                                }
                             }
                             
                             // Commit the transaction

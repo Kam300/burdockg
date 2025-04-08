@@ -75,6 +75,60 @@ namespace burdockg
         }
 
         // Added method to load materials
+        // Add this class to store material information
+        private class MaterialItem
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
+            
+            public override string ToString()
+            {
+                return Title;
+            }
+        }
+        
+        // Add these methods to handle material selection
+        private void AddMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            if (materialsComboBox.SelectedItem != null)
+            {
+                MaterialItem selectedMaterial = (MaterialItem)materialsComboBox.SelectedItem;
+                
+                // Check if the material is already in the list
+                bool alreadyExists = false;
+                foreach (MaterialItem item in materialsListBox.Items)
+                {
+                    if (item.Id == selectedMaterial.Id)
+                    {
+                        alreadyExists = true;
+                        break;
+                    }
+                }
+                
+                if (!alreadyExists)
+                {
+                    materialsListBox.Items.Add(selectedMaterial);
+                }
+                else
+                {
+                    MessageBox.Show("Этот материал уже добавлен в список", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
+        
+        private void RemoveMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            if (materialsListBox.SelectedItem != null)
+            {
+                materialsListBox.Items.Remove(materialsListBox.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Выберите материал для удаления", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+        
+        // Modify the LoadMaterials method to use MaterialItem
         private void LoadMaterials()
         {
             try
@@ -90,10 +144,10 @@ namespace burdockg
                             
                             while (reader.Read())
                             {
-                                ComboBoxItem item = new ComboBoxItem
+                                MaterialItem item = new MaterialItem
                                 {
-                                    Content = reader["Title"].ToString(),
-                                    Tag = Convert.ToInt32(reader["ID"])
+                                    Id = Convert.ToInt32(reader["ID"]),
+                                    Title = reader["Title"].ToString()
                                 };
                                 materialsComboBox.Items.Add(item);
                             }
@@ -108,6 +162,7 @@ namespace burdockg
         }
 
         // Method to load product data based on ID
+        // In the LoadProductData method, modify to include ArticleNumber
         private void LoadProductData(int id)
         {
             try
@@ -116,9 +171,9 @@ namespace burdockg
                 {
                     conn.Open();
                     
-                    // Load product details
-                    using (var cmd = new NpgsqlCommand("SELECT p.\"Title\", p.\"ProductTypeID\", p.\"Image\", p.\"MinCostForAgent\" " +
-                                                      "FROM \"Product\" p WHERE p.\"ID\" = @id", conn))
+                    // Load product details - add ArticleNumber to the SELECT statement
+                    using (var cmd = new NpgsqlCommand("SELECT p.\"Title\", p.\"ProductTypeID\", p.\"Image\", p.\"MinCostForAgent\", p.\"ArticleNumber\" " +
+                    "FROM \"Product\" p WHERE p.\"ID\" = @id", conn))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         
@@ -128,6 +183,9 @@ namespace burdockg
                             {
                                 // Set product name
                                 productNameTextBox.Text = reader["Title"].ToString();
+                                
+                                // Set article number
+                                ArkTextBox.Text = reader["ArticleNumber"].ToString();
                                 
                                 // Set product type
                                 int productTypeId = Convert.ToInt32(reader["ProductTypeID"]);
@@ -237,37 +295,24 @@ namespace burdockg
                     }
                     
                     // Load product material
-                    using (var cmd = new NpgsqlCommand("SELECT pm.\"MaterialID\" FROM \"ProductMaterial\" pm WHERE pm.\"ProductID\" = @id", conn))
+                    using (var cmd = new NpgsqlCommand("SELECT m.\"ID\", m.\"Title\" FROM \"Material\" m " +
+                                      "JOIN \"ProductMaterial\" pm ON m.\"ID\" = pm.\"MaterialID\" " +
+                                      "WHERE pm.\"ProductID\" = @id", conn))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         
                         using (var reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            materialsListBox.Items.Clear();
+                            
+                            while (reader.Read())
                             {
-                                int materialId = Convert.ToInt32(reader["MaterialID"]);
-                                
-                                // Debug message to check the material ID
-                                Console.WriteLine($"Looking for material ID: {materialId}");
-                                
-                                bool materialFound = false;
-                                foreach (ComboBoxItem item in materialsComboBox.Items)
+                                MaterialItem item = new MaterialItem
                                 {
-                                    // Debug each item's tag
-                                    Console.WriteLine($"Checking item with tag: {item.Tag}");
-                                    
-                                    if (item.Tag != null && (int)item.Tag == materialId)
-                                    {
-                                        materialsComboBox.SelectedItem = item;
-                                        materialFound = true;
-                                        break;
-                                    }
-                                }
-                                
-                                if (!materialFound)
-                                {
-                                    MessageBox.Show($"Материал с ID {materialId} не найден в списке материалов.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                }
+                                    Id = Convert.ToInt32(reader["ID"]),
+                                    Title = reader["Title"].ToString()
+                                };
+                                materialsListBox.Items.Add(item);
                             }
                         }
                     }
@@ -364,16 +409,18 @@ namespace burdockg
                                 cmd.ExecuteNonQuery();
                             }
                             
-                            // Then, insert the new relationship
-                            using (var cmd = new NpgsqlCommand(
-                                "INSERT INTO \"ProductMaterial\" (\"ProductID\", \"MaterialID\", \"Count\") VALUES (@productId, @materialId, @count)", 
-                                conn, transaction))
+                            // Then, insert the new relationships
+                            foreach (MaterialItem material in materialsListBox.Items)
                             {
-                                ComboBoxItem selectedMaterial = (ComboBoxItem)materialsComboBox.SelectedItem;
-                                cmd.Parameters.AddWithValue("@productId", productId);
-                                cmd.Parameters.AddWithValue("@materialId", (int)selectedMaterial.Tag);
-                                cmd.Parameters.AddWithValue("@count", 1); // Default count
-                                cmd.ExecuteNonQuery();
+                                using (var cmd = new NpgsqlCommand(
+                                    "INSERT INTO \"ProductMaterial\" (\"ProductID\", \"MaterialID\", \"Count\") VALUES (@productId, @materialId, @count)", 
+                                    conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@productId", productId);
+                                    cmd.Parameters.AddWithValue("@materialId", material.Id);
+                                    cmd.Parameters.AddWithValue("@count", 1); // Default count
+                                    cmd.ExecuteNonQuery();
+                                }
                             }
                             
                             transaction.Commit();
