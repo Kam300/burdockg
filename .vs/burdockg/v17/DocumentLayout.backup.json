@@ -3,7 +3,11 @@
   "WorkspaceRootPath": "E:\\burdockg\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|e:\\burdockg\\burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -15,16 +19,12 @@
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\editproduct.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|e:\\burdockg\\burdockg\\editproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\editproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\editproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\addproduct.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\addproduct.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -168,7 +168,7 @@
         },
         {
           "DockedWidth": 77,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -200,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AddProduct.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\AddProduct.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\AddProduct.xaml.cs",
@@ -212,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EditProduct.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\EditProduct.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\EditProduct.xaml.cs",
@@ -220,36 +220,33 @@
               "RelativeToolTip": "burdockg\\EditProduct.xaml.cs",
               "ViewState": "AgIAAJkBAAAAAAAAAAAiwLwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T08:32:03.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T08:32:03.54Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "EditProduct.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\EditProduct.xaml",
               "RelativeDocumentMoniker": "burdockg\\EditProduct.xaml",
               "ToolTip": "E:\\burdockg\\burdockg\\EditProduct.xaml",
               "RelativeToolTip": "burdockg\\EditProduct.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T17:17:37.29Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T17:17:37.29Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AddProduct.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\AddProduct.xaml",
               "RelativeDocumentMoniker": "burdockg\\AddProduct.xaml",
               "ToolTip": "E:\\burdockg\\burdockg\\AddProduct.xaml",
               "RelativeToolTip": "burdockg\\AddProduct.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:59:33.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:59:33.104Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "home.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\home.xaml",
               "RelativeDocumentMoniker": "burdockg\\home.xaml",
@@ -261,15 +258,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "home.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\home.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\home.xaml.cs",
               "ToolTip": "E:\\burdockg\\burdockg\\home.xaml.cs",
               "RelativeToolTip": "burdockg\\home.xaml.cs",
-              "ViewState": "AgIAAF4BAAAAAAAAAAAAAG8BAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADsBAAAAAAAAAAAAAEIBAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T17:06:52.381Z"
+              "WhenOpened": "2025-03-19T17:06:52.381Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

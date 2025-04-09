@@ -34,10 +34,21 @@ namespace burdockg
             LoadProducts();
         }
 
+        // Add these fields to the home class
+        private int _currentPage = 1;
+        private int _itemsPerPage = 5; // Number of products per page
+        private int _totalPages = 1;
+
+        // Modify the LoadProducts method to support pagination
         private void LoadProducts(bool resetPage = true)
         {
             try
             {
+                if (resetPage)
+                {
+                    _currentPage = 1;
+                }
+                
                 _products.Clear();
                 productsStackPanel.Children.Clear();
 
@@ -85,6 +96,23 @@ namespace burdockg
                             break;
                     }
                     
+                    // First, get the total count for pagination
+                    int totalCount = GetFilteredProductCount(conn);
+                    _totalPages = (int)Math.Ceiling((double)totalCount / _itemsPerPage);
+                    
+                    // Ensure current page is valid
+                    if (_currentPage > _totalPages && _totalPages > 0)
+                    {
+                        _currentPage = _totalPages;
+                    }
+                    else if (_currentPage < 1)
+                    {
+                        _currentPage = 1;
+                    }
+                    
+                    // Add pagination
+                    query += @" LIMIT @limit OFFSET @offset";
+                    
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
                         // Add parameters
@@ -97,6 +125,10 @@ namespace burdockg
                         {
                             cmd.Parameters.AddWithValue("@productType", _selectedProductType);
                         }
+                        
+                        // Add pagination parameters
+                        cmd.Parameters.AddWithValue("@limit", _itemsPerPage);
+                        cmd.Parameters.AddWithValue("@offset", (_currentPage - 1) * _itemsPerPage);
                         
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -111,7 +143,7 @@ namespace burdockg
                                     ProductType = reader["ProductType"].ToString()
                                 };
 
-                                // Modify the image handling section in the LoadProducts method
+                                // Image handling code remains the same
                                 if (!reader.IsDBNull(reader.GetOrdinal("Image")))
                                 {
                                     try
@@ -186,8 +218,13 @@ namespace burdockg
                         }
                     }
                     
-                    // Update product count
-                    productCountTextBlock.Text = $"Показано {_products.Count} из {GetTotalProductCount(conn)} продуктов";
+                    // Update product count and pagination text
+                    productCountTextBlock.Text = $"Показано {_products.Count} из {totalCount} продуктов";
+                    paginationTextBlock.Text = $"Страница {_currentPage} из {_totalPages}";
+                    
+                    // Enable/disable pagination buttons
+                    prevPageButton.IsEnabled = _currentPage > 1;
+                    nextPageButton.IsEnabled = _currentPage < _totalPages;
                 }
             }
             catch (Exception ex)
@@ -196,11 +233,59 @@ namespace burdockg
             }
         }
 
-        private int GetTotalProductCount(NpgsqlConnection conn)
+        private int GetFilteredProductCount(NpgsqlConnection conn)
         {
-            using (var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM \"Product\"", conn))
+            string query = @"
+                SELECT COUNT(*)
+                FROM ""Product"" p
+                JOIN ""ProductType"" pt ON p.""ProductTypeID"" = pt.""ID""
+                WHERE 1=1";
+            
+            // Add search filter
+            if (!string.IsNullOrWhiteSpace(_searchText))
             {
+                query += @" AND (p.""Title"" ILIKE @searchText OR p.""ArticleNumber"" ILIKE @searchText)";
+            }
+            
+            // Add product type filter
+            if (_selectedProductType != "Все типы")
+            {
+                query += @" AND pt.""Title"" = @productType";
+            }
+            
+            using (var cmd = new NpgsqlCommand(query, conn))
+            {
+                // Add parameters
+                if (!string.IsNullOrWhiteSpace(_searchText))
+                {
+                    cmd.Parameters.AddWithValue("@searchText", $"%{_searchText}%");
+                }
+                
+                if (_selectedProductType != "Все типы")
+                {
+                    cmd.Parameters.AddWithValue("@productType", _selectedProductType);
+                }
+                
                 return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        // Add pagination button click handlers
+        private void PrevPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentPage > 1)
+            {
+                _currentPage--;
+                LoadProducts(false);
+            }
+        }
+
+        private void NextPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentPage < _totalPages)
+            {
+                _currentPage++;
+                LoadProducts(false);
             }
         }
 

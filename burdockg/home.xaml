@@ -56,11 +56,39 @@
         </Grid>
         
         <!-- Main Content - Product List -->
-        <ScrollViewer Grid.Row="2" Margin="20,10,20,10" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="productsStackPanel">
+        <!-- Replace the ScrollViewer with a Grid that contains the products and pagination controls -->
+        <Grid Grid.Row="2" Margin="20,10,20,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Products panel (without ScrollViewer) -->
+            <StackPanel x:Name="productsStackPanel" Grid.Row="0">
                 <!-- Products will be added here dynamically -->
             </StackPanel>
-        </ScrollViewer>
+            
+            <!-- Pagination controls -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button x:Name="prevPageButton" Content="&lt;" Width="40" Height="30" Margin="5,0" Click="PrevPageButton_Click" Background="#00FF7F" BorderThickness="0" FontSize="16" FontFamily="Gabriola">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                
+                <TextBlock x:Name="paginationTextBlock" Text="Страница 1 из 1" VerticalAlignment="Center" Margin="10,0" FontSize="14" FontFamily="Gabriola"/>
+                
+                <Button x:Name="nextPageButton" Content="&gt;" Width="40" Height="30" Margin="5,0" Click="NextPageButton_Click" Background="#00FF7F" BorderThickness="0" FontSize="16" FontFamily="Gabriola">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
         
         <!-- Product Count -->
         <TextBlock x:Name="productCountTextBlock" Grid.Row="3" Margin="20,5,20,5"
