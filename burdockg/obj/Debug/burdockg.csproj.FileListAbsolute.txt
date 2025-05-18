@@ -222,3 +222,4 @@ E:\burdockg\burdockg\obj\Debug\burdockg.csproj.CoreCompileInputs.cache
 E:\burdockg\burdockg\obj\Debug\burdockg.csproj.Up2Date
 E:\burdockg\burdockg\obj\Debug\burdockg.exe
 E:\burdockg\burdockg\obj\Debug\burdockg.pdb
+E:\burdockg\burdockg\obj\Debug\burdockg.exe.config

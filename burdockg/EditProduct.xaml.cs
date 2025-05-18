@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -332,13 +332,40 @@ namespace burdockg
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Validate input
-            if (string.IsNullOrWhiteSpace(productNameTextBox.Text) ||
-                productTypeComboBox.SelectedItem == null ||
-                string.IsNullOrWhiteSpace(costTextBox.Text) ||
-                materialsComboBox.SelectedItem == null)
+            // Validate input - fix the validation logic
+            bool hasEmptyFields = false;
+            string emptyFieldsMessage = "Следующие поля обязательны для заполнения:\n";
+            
+            if (string.IsNullOrWhiteSpace(productNameTextBox.Text))
             {
-                MessageBox.Show("Пожалуйста, заполните все обязательные поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                hasEmptyFields = true;
+                emptyFieldsMessage += "- Наименование продукта\n";
+            }
+            
+            if (productTypeComboBox.SelectedItem == null)
+            {
+                hasEmptyFields = true;
+                emptyFieldsMessage += "- Тип продукта\n";
+            }
+            
+            if (string.IsNullOrWhiteSpace(costTextBox.Text))
+            {
+                hasEmptyFields = true;
+                emptyFieldsMessage += "- Стоимость\n";
+            }
+            
+            if (string.IsNullOrWhiteSpace(ArkTextBox.Text))
+            {
+                hasEmptyFields = true;
+                emptyFieldsMessage += "- Артикул\n";
+            }
+            
+            // Remove the materials validation since it's optional
+            // We have a separate list for selected materials
+            
+            if (hasEmptyFields)
+            {
+                MessageBox.Show(emptyFieldsMessage, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -364,7 +391,8 @@ namespace burdockg
                                 UPDATE ""Product"" 
                                 SET ""Title"" = @title, 
                                     ""MinCostForAgent"" = @cost, 
-                                    ""ProductTypeID"" = @productTypeId";
+                                    ""ProductTypeID"" = @productTypeId,
+                                    ""ArticleNumber"" = @articleNumber";
                             
                             // Add image update if we have a new image
                             if (selectedImageData != null)
@@ -383,6 +411,7 @@ namespace burdockg
                                 cmd.Parameters.AddWithValue("@title", productNameTextBox.Text);
                                 cmd.Parameters.AddWithValue("@cost", cost);
                                 cmd.Parameters.AddWithValue("@productId", productId);
+                                cmd.Parameters.AddWithValue("@articleNumber", ArkTextBox.Text);
                                 
                                 // Get the selected product type ID
                                 ComboBoxItem selectedItem = (ComboBoxItem)productTypeComboBox.SelectedItem;

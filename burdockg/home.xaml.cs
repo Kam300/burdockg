@@ -36,7 +36,7 @@ namespace burdockg
 
         // Add these fields to the home class
         private int _currentPage = 1;
-        private int _itemsPerPage = 5; // Number of products per page
+        private int _itemsPerPage = 3; // Number of products per page
         private int _totalPages = 1;
 
         // Modify the LoadProducts method to support pagination
@@ -325,133 +325,172 @@ namespace burdockg
             // Create border container
             Border border = new Border
             {
-                BorderThickness = new Thickness(1),
-                BorderBrush = System.Windows.Media.Brushes.LightGray,
-                CornerRadius = new CornerRadius(5),
-                Margin = new Thickness(0, 0, 0, 10)
+                Style = (Style)FindResource("ProductItemStyle"),
+                Tag = product.Id
+            };
+            
+            // Add mouse click event to the border
+            border.MouseLeftButtonDown += (sender, e) => {
+                if (sender is Border clickedBorder && clickedBorder.Tag is int productId)
+                {
+                    // Open the edit product window
+                    EditProduct editProductWindow = new EditProduct(productId);
+                    bool? result = editProductWindow.ShowDialog();
+                    
+                    if (result == true)
+                    {
+                        // Reload products when returning from edit window with changes
+                        LoadProducts();
+                    }
+                }
             };
         
-            // Create main grid
-            Grid grid = new Grid { Height = 120 };
+            // Create main grid - удаляем фиксированную высоту
+            Grid grid = new Grid();
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(150) });
         
             // Product Image
-            Border imageBorder = new Border
+            Image productImage = new Image
             {
+                Width = 100,
+                Height = 100,
                 Margin = new Thickness(10),
-                BorderThickness = new Thickness(1),
-                BorderBrush = System.Windows.Media.Brushes.LightGray
+                Stretch = System.Windows.Media.Stretch.Uniform,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
             };
-        
-            Image image = new Image { Stretch = System.Windows.Media.Stretch.Uniform };
             
             // Set image source
             if (product.ImageData != null && product.ImageData.Length > 0)
             {
-                BitmapImage bitmap = new BitmapImage();
-                using (MemoryStream stream = new MemoryStream(product.ImageData))
+                try
                 {
-                    bitmap.BeginInit();
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.StreamSource = stream;
-                    bitmap.EndInit();
+                    using (MemoryStream ms = new MemoryStream(product.ImageData))
+                    {
+                        BitmapImage image = new BitmapImage();
+                        image.BeginInit();
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.StreamSource = ms;
+                        image.EndInit();
+                        productImage.Source = image;
+                    }
                 }
-                image.Source = bitmap;
+                catch
+                {
+                    productImage.Source = new BitmapImage(new Uri("/images/image.png", UriKind.Relative));
+                }
             }
             else
             {
-                image.Source = new BitmapImage(new Uri("/images/image.png", UriKind.Relative));
+                productImage.Source = new BitmapImage(new Uri("/images/image.png", UriKind.Relative));
             }
-        
-            imageBorder.Child = image;
-            Grid.SetColumn(imageBorder, 0);
-            grid.Children.Add(imageBorder);
-        
-            // Product Details
-            StackPanel detailsPanel = new StackPanel
+            
+            Grid.SetColumn(productImage, 0);
+            grid.Children.Add(productImage);
+            
+            // Product Info
+            StackPanel infoPanel = new StackPanel
             {
-                Margin = new Thickness(10, 10, 0, 10),
+                Margin = new Thickness(10),
                 VerticalAlignment = VerticalAlignment.Center
             };
-        
-            // Product Type and Name
-            TextBlock typeText = new TextBlock
+            Grid.SetColumn(infoPanel, 1);
+            
+            // Тип продукта | Наименование продукта
+            TextBlock titleBlock = new TextBlock
             {
                 Text = $"{product.ProductType} | {product.Title}",
                 FontSize = 16,
-                FontFamily = new System.Windows.Media.FontFamily("Gabriola")
+                FontWeight = FontWeights.Bold,
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 5)
             };
-            detailsPanel.Children.Add(typeText);
-        
-            // Article Number
-            TextBlock articleText = new TextBlock
+            infoPanel.Children.Add(titleBlock);
+            
+            // Артикул
+            TextBlock articleBlock = new TextBlock
             {
                 Text = $"Артикул: {product.ArticleNumber}",
-                Margin = new Thickness(0, 5, 0, 5),
                 FontSize = 14,
-                FontFamily = new System.Windows.Media.FontFamily("Gabriola")
+                Margin = new Thickness(0, 0, 0, 5)
             };
-            detailsPanel.Children.Add(articleText);
-        
-            Grid.SetColumn(detailsPanel, 1);
-            grid.Children.Add(detailsPanel);
-        
-            // Price and Actions
-            StackPanel priceActionsPanel = new StackPanel
+            infoPanel.Children.Add(articleBlock);
+            
+            // Материалы
+            // Получаем материалы для продукта из базы данных
+            List<string> materials = GetProductMaterials(product.Id);
+            if (materials.Count > 0)
             {
-                Margin = new Thickness(0, 10, 10, 10)
-            };
-        
-            TextBlock priceText = new TextBlock
+                TextBlock materialsBlock = new TextBlock
+                {
+                    Text = $"Материалы: {string.Join(", ", materials)}",
+                    FontSize = 14,
+                    TextWrapping = TextWrapping.Wrap
+                };
+                infoPanel.Children.Add(materialsBlock);
+            }
+            
+            grid.Children.Add(infoPanel);
+            
+            // Price
+            TextBlock priceBlock = new TextBlock
             {
-                Text = $"{product.MinCostForAgent:C}",
-                HorizontalAlignment = HorizontalAlignment.Right,
+                Text = $"{product.MinCostForAgent:N2} ₽",
+                FontSize = 18,
                 FontWeight = FontWeights.Bold,
-                FontSize = 16,
-                FontFamily = new System.Windows.Media.FontFamily("Gabriola")
-            };
-            priceActionsPanel.Children.Add(priceText);
-        
-            // Edit and Delete buttons
-            StackPanel buttonsPanel = new StackPanel
-            {
-                Orientation = Orientation.Horizontal,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(0, 20, 0, 0)
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(10)
             };
-        
-            Button editButton = new Button
-            {
-                Content = "Изменить",
-                Width = 70,
-                Height = 30,
-                Margin = new Thickness(0, 0, 10, 0),
-                Tag = product.Id
-            };
-            editButton.Click += EditButton_Click;
-        
-            Button deleteButton = new Button
-            {
-                Content = "Удалить",
-                Width = 70,
-                Height = 30,
-                Tag = product.Id
-            };
-            deleteButton.Click += DeleteButton_Click;
-        
-            buttonsPanel.Children.Add(editButton);
-            buttonsPanel.Children.Add(deleteButton);
-            priceActionsPanel.Children.Add(buttonsPanel);
-        
-            Grid.SetColumn(priceActionsPanel, 2);
-            grid.Children.Add(priceActionsPanel);
-        
+            Grid.SetColumn(priceBlock, 2);
+            grid.Children.Add(priceBlock);
+            
             border.Child = grid;
             return border;
         }
-
+        
+        // Метод для получения материалов продукта
+        private List<string> GetProductMaterials(int productId)
+        {
+            List<string> materials = new List<string>();
+            
+            try
+            {
+                using (var conn = new NpgsqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    
+                    // Предполагаем, что у вас есть таблица связи продуктов и материалов
+                    string query = @"
+                        SELECT m.""Title""
+                        FROM ""Material"" m
+                        JOIN ""ProductMaterial"" pm ON m.""ID"" = pm.""MaterialID""
+                        WHERE pm.""ProductID"" = @productId";
+                    
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@productId", productId);
+                        
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                materials.Add(reader["Title"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок при получении материалов
+                Console.WriteLine($"Ошибка при получении материалов: {ex.Message}");
+            }
+            
+            return materials;
+        }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigate to AddProduct window

@@ -3,11 +3,19 @@
   "WorkspaceRootPath": "E:\\burdockg\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|e:\\burdockg\\burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|e:\\burdockg\\burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\profile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\profile.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -41,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\profile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\profile.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|solutionrelative:burdockg\\registration.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E5F55A24-3BE7-45C6-A7EC-EE4EF0B7F5CB}|burdockg\\burdockg.csproj|E:\\burdockg\\burdockg\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -168,7 +172,7 @@
         },
         {
           "DockedWidth": 77,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -176,7 +180,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
+              "Title": "profile.xaml.cs",
+              "DocumentMoniker": "E:\\burdockg\\burdockg\\profile.xaml.cs",
+              "RelativeDocumentMoniker": "burdockg\\profile.xaml.cs",
+              "ToolTip": "E:\\burdockg\\burdockg\\profile.xaml.cs",
+              "RelativeToolTip": "burdockg\\profile.xaml.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAhwIEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T08:25:41.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "packages.config",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\packages.config",
               "RelativeDocumentMoniker": "burdockg\\packages.config",
@@ -188,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "burdockg\\DatabaseHelper.cs",
@@ -200,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "AddProduct.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\AddProduct.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\AddProduct.xaml.cs",
@@ -212,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "EditProduct.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\EditProduct.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\EditProduct.xaml.cs",
@@ -224,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "EditProduct.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\EditProduct.xaml",
               "RelativeDocumentMoniker": "burdockg\\EditProduct.xaml",
@@ -235,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AddProduct.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\AddProduct.xaml",
               "RelativeDocumentMoniker": "burdockg\\AddProduct.xaml",
@@ -246,15 +262,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "home.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\home.xaml",
               "RelativeDocumentMoniker": "burdockg\\home.xaml",
               "ToolTip": "E:\\burdockg\\burdockg\\home.xaml",
               "RelativeToolTip": "burdockg\\home.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:50:32.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:50:32.009Z"
             },
             {
               "$type": "Document",
@@ -264,14 +279,14 @@
               "RelativeDocumentMoniker": "burdockg\\home.xaml.cs",
               "ToolTip": "E:\\burdockg\\burdockg\\home.xaml.cs",
               "RelativeToolTip": "burdockg\\home.xaml.cs",
-              "ViewState": "AgIAADsBAAAAAAAAAAAAAEIBAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAB4BAAAAAAAAAAAqwCIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-19T17:06:52.381Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "profile.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\profile.xaml",
               "RelativeDocumentMoniker": "burdockg\\profile.xaml",
@@ -282,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "menu.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\menu.xaml",
               "RelativeDocumentMoniker": "burdockg\\menu.xaml",
@@ -293,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "Registration.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\Registration.xaml",
               "RelativeDocumentMoniker": "burdockg\\Registration.xaml",
@@ -304,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Authorization.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\Authorization.xaml",
               "RelativeDocumentMoniker": "burdockg\\Authorization.xaml",
@@ -315,7 +330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\MainWindow.xaml",
               "RelativeDocumentMoniker": "burdockg\\MainWindow.xaml",
@@ -326,7 +341,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "App.config",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\App.config",
               "RelativeDocumentMoniker": "burdockg\\App.config",
@@ -338,7 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Authorization.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\Authorization.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\Authorization.xaml.cs",
@@ -350,7 +365,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "App.g.i.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\obj\\Debug\\App.g.i.cs",
               "RelativeDocumentMoniker": "burdockg\\obj\\Debug\\App.g.i.cs",
@@ -362,19 +377,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "App.xaml",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\App.xaml",
               "RelativeDocumentMoniker": "burdockg\\App.xaml",
               "ToolTip": "E:\\burdockg\\burdockg\\App.xaml",
               "RelativeToolTip": "burdockg\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-19T16:45:15.554Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T16:45:15.554Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Registration.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\Registration.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\Registration.xaml.cs",
@@ -386,7 +400,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\App.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\App.xaml.cs",
@@ -398,7 +412,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "menu.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\menu.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\menu.xaml.cs",
@@ -410,7 +424,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "E:\\burdockg\\burdockg\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "burdockg\\MainWindow.xaml.cs",
